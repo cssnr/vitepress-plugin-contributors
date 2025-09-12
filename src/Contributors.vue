@@ -4,13 +4,12 @@ const props = defineProps({
   size: { type: String, default: '64' },
   margin: { type: String, default: null },
   heading: { type: String, default: null },
-  maxUsers: { type: Number, default: null },
+  maxUsers: { type: String, default: null },
 })
 console.debug('%c Contributors', 'color: Cyan', 'props:', props)
 
-const contributors = props.maxUsers
-  ? props.contributors.slice(0, props.maxUsers)
-  : props.contributors
+const maxUsers = Number(props.maxUsers)
+const contributors = maxUsers ? props.contributors.slice(0, maxUsers) : props.contributors
 // console.debug('contributors.length:', contributors.length)
 
 const outerStyle = { margin: props.margin }

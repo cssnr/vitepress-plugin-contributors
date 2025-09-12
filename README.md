@@ -45,6 +45,8 @@ npm i @cssnr/vitepress-plugin-contributors
 }
 ```
 
+<details><summary>Click Here to View Usage: <b>get-contributors</b></summary>
+
 Basic usage, all contributors excluding bot users.
 
 ```shell
@@ -64,6 +66,8 @@ Only the `user/repo` is required. All other arguments are optional.
 | `-m` or `--max-users` | 0                              | Max users to fetch. 0 is unlimited.   |
 | `-f` or `--file`      | `.vitepress/contributors.json` | Output file relative to project root. |
 | `-b` or `--bots`      | `false`                        | Include bot users in the results.     |
+
+</details>
 
 3. Add the `contributors.json` file location to your `.gitignore` as it's a generated file.
 
@@ -101,7 +105,7 @@ The `VPBadge` entries are only required if you are using the VitePress [Badge](h
 
 6. Finally, add the `<Contributors>` tag to your markdown or component.
 
-See the [Usage](#usage) for more details and review the additional [Options](#options)...
+See the [Usage](#usage) for more details and review the additional [Options](#options).
 
 ## Usage
 
@@ -121,14 +125,31 @@ import contributors from '../.vitepress/contributors.json'
 <Contributors heading="Contributors" :contributors="contributors" />
 ```
 
+Check out the [Options](#options) to customize the look and feel.
+
 ## Options
 
-| Property&nbsp;Name |   Default    |  Type  | Description&nbsp;of&nbsp;Value  |
-| :----------------- | :----------: | :----: | :------------------------------ |
-| **:contributors**  | **Required** | Array  | Contributors.json file import   |
-| **heading**        |      -       | String | Optional Heading Text           |
-| **size**           |     `64`     | String | Size of Icons in Pixels         |
-| **margin**         |      -       | String | CSS Margin String for Container |
+Only the `:contributors` parameter is required, everything else is optional.
+
+| Property&nbsp;Name |   Default    |  Type  | Description&nbsp;of&nbsp;Value                                                             |
+| :----------------- | :----------: | :----: | :----------------------------------------------------------------------------------------- |
+| **:contributors**  | **Required** | Array  | `contributors.json` file import data                                                       |
+| **max-users**      |      -       | String | Max Number of users to display                                                             |
+| **heading**        |      -       | String | Optional Heading text                                                                      |
+| **size**           |     `64`     | String | Size of Icons in pixels                                                                    |
+| **margin**         |      -       | String | [CSS margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) string for container |
+
+Example with all arguments:
+
+```markdown
+<Contributors
+    :contributors="$contributors"
+    heading="Contributors"
+    max-users="100"
+    size="48"
+    margin="36px 0 96px"
+/>
+```
 
 ## Support
 
