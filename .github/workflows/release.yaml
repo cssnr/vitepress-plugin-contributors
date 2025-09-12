@@ -1,0 +1,91 @@
+name: "Release"
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: "Release"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      id-token: write
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v5
+
+      - name: "Debug Event"
+        continue-on-error: true
+        run: |
+          echo "ref: ${{ github.ref }}"
+          echo "event_name: ${{ github.event_name }}"
+          echo "github.event.repository.name: ${{ github.event.repository.name }}"
+
+          echo "::group::cat event.json"
+          cat "${GITHUB_EVENT_PATH}"
+          echo "::endgroup::"
+
+      - name: "Update Package Version"
+        uses: cssnr/update-json-value-action@v1
+        with:
+          file: "package.json"
+
+      - name: "Debug Package File"
+        continue-on-error: true
+        run: |
+          cat package.json
+
+      - name: "Setup Node 22"
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          registry-url: "https://registry.npmjs.org"
+
+      - name: "Install"
+        run: |
+          npm ci
+
+      - name: "Publish"
+        if: ${{ !github.event.release.prerelease }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          npm publish --provenance --access public
+
+      - name: "Upload to Actions"
+        uses: actions/upload-artifact@v4
+        continue-on-error: true
+        with:
+          name: dist
+          path: dist
+
+      - name: "Archive Distribution"
+        continue-on-error: true
+        run: |
+          zip -r dist.zip dist package.json README.md LICENSE
+
+      - name: "Upload to Release"
+        if: ${{ github.event_name == 'release' }}
+        uses: svenstaro/upload-release-action@v2
+        continue-on-error: true
+        with:
+          file: dist.zip
+          tag: ${{ github.ref }}
+
+      - name: "Update Release Notes Action"
+        uses: smashedr/update-release-notes-action@master
+        continue-on-error: true
+        with:
+          location: tail
+
+      - name: "Send Failure Notification"
+        if: ${{ failure() }}
+        uses: sarisia/actions-status-discord@v1
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}

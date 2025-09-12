@@ -1,0 +1,57 @@
+{
+  "name": "@cssnr/vitepress-plugin-contributors",
+  "version": "0.0.1",
+  "license": "GPL-3.0-only",
+  "description": "VitePress Plugin to easily display GitHub contributors and automatically updated on every install/deploy.",
+  "homepage": "https://github.com/cssnr/vitepress-plugin-contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cssnr/vitepress-plugin-contributors.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cssnr/vitepress-plugin-contributors/issues"
+  },
+  "funding": {
+    "type": "ko-fi",
+    "url": "https://ko-fi.com/cssnr"
+  },
+  "keywords": [
+    "vitepress",
+    "plugin",
+    "contributors",
+    "github"
+  ],
+  "main": "dist/Contributors.umd.js",
+  "module": "dist/Contributors.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "prepare": "npm run build",
+    "prettier": "npx prettier --check ."
+  },
+  "dependencies": {
+    "commander": "^14.0.1"
+  },
+  "peerDependencies": {
+    "vitepress": "^1.0.0",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.1",
+    "prettier": "^3.6.2",
+    "vite": "^7.1.5",
+    "vue": "^3.5.21"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/Contributors.es.js",
+      "require": "./dist/Contributors.umd.js"
+    },
+    "./style.css": "./dist/Contributors.css"
+  },
+  "bin": {
+    "get-contributors": "./src/get-contributors.js"
+  }
+}
