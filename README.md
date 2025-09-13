@@ -50,7 +50,7 @@ npm i @cssnr/vitepress-plugin-contributors
 }
 ```
 
-If you don't add the `postinstall` script you need to add `npm run get-contributors` to your build.
+_If you don't add the `postinstall` script you need to add `get-contributors` to your build._
 
 <details><summary>Click Here to View Usage - <b>get-contributors</b></summary>
 
