@@ -29,7 +29,7 @@ This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributor
 1. [get-contributors](src/get-contributors.js) - script to generate the `contributors.json` file.
 2. [Contributors.vue](src/Contributors.vue) - component to display the contributors in VitePress.
 
-Also include is a detailed [Install](#install) guide with [Support](#support) available.
+Also included is a detailed [Install](#install) guide with [Support](#support) available.
 
 ## Install
 
