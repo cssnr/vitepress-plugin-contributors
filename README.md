@@ -19,6 +19,7 @@
 - [Install](#Install)
 - [Usage](#Usage)
 - [Options](#Options)
+- [Demos](#Demos)
 - [Support](#Support)
 - [Contributing](#Contributing)
 
@@ -197,6 +198,16 @@ Example with all arguments.
     margin="36px 0 96px"
 />
 ```
+
+## Demos
+
+The plugin is running on these pages:
+
+- https://django-files.github.io/ + [/team](https://django-files.github.io/team)
+- https://docker-deploy.cssnr.com/
+- https://portainer-deploy.cssnr.com/
+
+If you have a live demo, let us know and we will post it here...
 
 ## Support
 
