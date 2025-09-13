@@ -203,7 +203,7 @@ Example with all arguments.
 
 The plugin is running on these pages:
 
-- https://django-files.github.io/ + [/team](https://django-files.github.io/team)
+- https://django-files.github.io/ and [/team](https://django-files.github.io/team)
 - https://docker-deploy.cssnr.com/
 - https://portainer-deploy.cssnr.com/
 
@@ -228,9 +228,6 @@ If you are experiencing an issue/bug or getting unexpected results:
 # Contributing
 
 For instructions on creating a PR, see the [CONTRIBUTING.md](#contributing-ov-file).
-
-Please consider making a donation to support the development of this project
-and [additional](https://cssnr.com/) open source projects.
 
 [![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cssnr)
 
