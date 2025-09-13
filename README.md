@@ -45,7 +45,7 @@ npm i @cssnr/vitepress-plugin-contributors
 }
 ```
 
-<details><summary>Click Here to View Usage: <b>get-contributors</b></summary>
+<details><summary>Click Here to View Usage - <b>get-contributors</b></summary>
 
 Basic usage, all contributors excluding bot users.
 
@@ -69,7 +69,7 @@ Only the `user/repo` is required. All other arguments are optional.
 
 </details>
 
-3. Add the `contributors.json` file location to your `.gitignore` as it's a generated file.
+3. Add the `contributors.json` file location to your `.gitignore`.
 
 ```gitignore
 .vitepress/contributors.json
@@ -129,7 +129,7 @@ import contributors from '../.vitepress/contributors.json'
 <Contributors heading="Contributors" :contributors="contributors" />
 ```
 
-See the [Options](#options) for customization.
+See the [Options](#options) for more details...
 
 ## Options
 
