@@ -127,7 +127,7 @@ See the [Usage](#usage) for more details...
 If you added `contributors` as a global component, you only need the `<Contributors>` tag.
 
 ```markdown
-<Contributors heading="Contributors" :contributors="$contributors" />
+<Contributors :contributors="$contributors" />
 ```
 
 Otherwise, import the `contributors.json` and add a `<Contributors>` tag.
@@ -137,7 +137,7 @@ Otherwise, import the `contributors.json` and add a `<Contributors>` tag.
 import contributors from '../.vitepress/contributors.json'
 </script>
 
-<Contributors heading="Contributors" :contributors="contributors" />
+<Contributors :contributors="contributors" />
 ```
 
 See the [Options](#options) for more details...
@@ -169,7 +169,7 @@ Example with all arguments.
 ## Support
 
 Please let us know if you run into any [issues](https://github.com/cssnr/vitepress-plugin-contributors/issues)
-or want to see [new features](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests)...
+or want to see [a new feature](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests).
 
 For general help or to request a feature:
 
