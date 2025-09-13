@@ -29,11 +29,11 @@ This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributor
 1. [get-contributors](src/get-contributors.js) - script to generate the `contributors.json` file.
 2. [Contributors.vue](src/Contributors.vue) - component to display the contributors in VitePress.
 
-Additionally, this includes detailed [Install](#install) guide, plus [Support](#support).
+Also include is a detailed [Install](#install) guide with [Support](#support) available.
 
 ## Install
 
-1. Install directly into your VitePress with [npm](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors).
+1. Install directly into your VitePress from [npmjs](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors).
 
 ```shell
 npm i @cssnr/vitepress-plugin-contributors
@@ -50,9 +50,11 @@ npm i @cssnr/vitepress-plugin-contributors
 }
 ```
 
-If you don't add the `postinstall` script you need to add `npm run get-contributors` to your build.
+_If you don't add the `postinstall` script you need to add `get-contributors` to your build._
 
 <details><summary>Click Here to View Usage - <b>get-contributors</b></summary>
+
+Show help: `npx get-contributors -h`
 
 Basic usage, all contributors excluding bot users.
 
@@ -90,6 +92,12 @@ Only the `user/repo` is required. All other arguments are optional.
 npm run get-contributors
 ```
 
+Alternatively, if you did not add the `get-contributors` script from step #2.
+
+```shell
+npx get-contributors user/repo
+```
+
 5. Import the components in your `.vitepress/theme/index.js`.
 
 ```javascript
@@ -110,11 +118,24 @@ export default {
 }
 ```
 
-`Global` - If you are unsure about this, add these lines for simplicity.
+`Global` - If you are unsure about this [usage](#usage), add these lines for simplicity.
 
 `VPBadge` - Only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge).
 
-6. Finally, use the [Contributors.vue](src/Contributors.vue) component in your markdown.
+<details><summary>More Details on the <b>contributors.json</b> path</summary>
+
+Note, you may need to modify the `../contributors.json` import location to match your setup.
+If your VitePress configuration directory is located at `.vitepress` then the default output
+path of `.vitepress/contributors.json` will import from the relative path `../contributors.json`.
+
+If you are not importing `contributors` as a Global, this path will be relative to the file you are importing it in.  
+See the [Usage](#usage) for more details.
+
+---
+
+</details>
+
+6. Finally, use the [Contributors.vue](src/Contributors.vue) component in your markdown or component.
 
 ```markdown
 <Contributors :contributors="$contributors" />
@@ -123,6 +144,8 @@ export default {
 See the [Usage](#usage) for more details...
 
 ## Usage
+
+To use, simply add the `<Contributors>` tag to your markdown file (or component).
 
 If you added `contributors` as a global component, you only need the `<Contributors>` tag.
 
@@ -139,6 +162,8 @@ import contributors from '../.vitepress/contributors.json'
 
 <Contributors :contributors="contributors" />
 ```
+
+The `contributors.json` file is relative to the file you are importing it in.
 
 See the [Options](#options) for more details...
 
@@ -178,7 +203,7 @@ For general help or to request a feature:
 
 If you are experiencing an issue/bug or getting unexpected results:
 
-- Report an Issue: https://github.com/cssnr/vitepress-plugin-contributors/issues
+- Report an Issue: [cssnr/vitepress-plugin-contributors/issues](https://github.com/cssnr/vitepress-plugin-contributors/issues)
 - Chat with us on Discord: https://discord.gg/wXy6m2X8wY
 - Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=VitePress%20Plugin%20Contributors)
 
