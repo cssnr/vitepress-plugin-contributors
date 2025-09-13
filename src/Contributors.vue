@@ -6,7 +6,7 @@ const props = defineProps({
   heading: { type: String, default: null },
   maxUsers: { type: String, default: null },
 })
-console.debug('%c Contributors', 'color: Cyan', 'props:', props)
+// console.debug('%c Contributors', 'color: Cyan', 'props:', props)
 
 const maxUsers = Number(props.maxUsers)
 const contributors = maxUsers ? props.contributors.slice(0, maxUsers) : props.contributors
