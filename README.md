@@ -29,11 +29,11 @@ This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributor
 1. [get-contributors](src/get-contributors.js) - script to generate the `contributors.json` file.
 2. [Contributors.vue](src/Contributors.vue) - component to display the contributors in VitePress.
 
-Additionally, this includes detailed [Install](#install) guide, plus [Support](#support).
+Also include is a detailed [Install](#install) guide with [Support](#support) available.
 
 ## Install
 
-1. Install directly into your VitePress with [npm](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors).
+1. Install directly into your VitePress from [npmjs](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors).
 
 ```shell
 npm i @cssnr/vitepress-plugin-contributors
@@ -118,7 +118,7 @@ export default {
 }
 ```
 
-`Global` - If you are unsure about this, add these lines for simplicity.
+`Global` - If you are unsure about this [usage](#usage), add these lines for simplicity.
 
 `VPBadge` - Only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge).
 
@@ -135,7 +135,7 @@ See the [Usage](#usage) for more details.
 
 </details>
 
-6. Finally, use the [Contributors.vue](src/Contributors.vue) component in your markdown.
+6. Finally, use the [Contributors.vue](src/Contributors.vue) component in your markdown or component.
 
 ```markdown
 <Contributors :contributors="$contributors" />
@@ -144,6 +144,8 @@ See the [Usage](#usage) for more details.
 See the [Usage](#usage) for more details...
 
 ## Usage
+
+To use, simply add the `<Contributors>` tag to your markdown file (or component).
 
 If you added `contributors` as a global component, you only need the `<Contributors>` tag.
 
