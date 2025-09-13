@@ -2,7 +2,7 @@
   "name": "@cssnr/vitepress-plugin-contributors",
   "version": "0.0.1",
   "license": "GPL-3.0-only",
-  "description": "VitePress Plugin to easily display GitHub contributors and automatically updated on every install or deploy.",
+  "description": "VitePress Plugin to easily generate, update and display GitHub contributors. Automatically updated on every installation or deployment with custom options.",
   "homepage": "https://github.com/cssnr/vitepress-plugin-contributors",
   "repository": {
     "type": "git",
