@@ -24,11 +24,11 @@
 
 A [VitePress](https://vitepress.dev/) Plugin to Easily display repository Contributors.
 
-## Install
-
 NPM Package: https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors
 
-1. Install directly into your VitePress with.
+## Install
+
+1. Install directly into your VitePress with npm.
 
 ```shell
 npm i @cssnr/vitepress-plugin-contributors
@@ -40,7 +40,7 @@ npm i @cssnr/vitepress-plugin-contributors
 {
   "scripts": {
     "postinstall": "npm run get-contributors",
-    "get-contributors": "npx get-contributors cssnr/stack-deploy-action"
+    "get-contributors": "npx get-contributors user/repo"
   }
 }
 ```
@@ -81,22 +81,22 @@ Only the `user/repo` is required. All other arguments are optional.
 npm run get-contributors
 ```
 
-5. Then import it in your `.vitepress/theme/index.js`.
+5. Import the components in your `.vitepress/theme/index.js`.
 
 ```javascript
-import DefaultTheme, { VPBadge } from 'vitepress/theme' // required for Badge
+import DefaultTheme, { VPBadge } from 'vitepress/theme' // only if using VPBadge
 
-import Contributors from '@cssnr/vitepress-plugin-contributors' // add this line
-import '@cssnr/vitepress-plugin-contributors/style.css' // add this line
+import Contributors from '@cssnr/vitepress-plugin-contributors' // ADD this line
+import '@cssnr/vitepress-plugin-contributors/style.css' // ADD this line
 
-import contributors from '../contributors.json' // OPTIONAL - add to make global
+import contributors from '../contributors.json' // OPTIONAL - global
 
 export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
-    app.component('Badge', VPBadge) // required for Badge
-    app.component('Contributors', Contributors) // add this line
-    app.config.globalProperties.$contributors = contributors // OPTIONAL - add to make global
+    app.component('Badge', VPBadge) // only if using VPBadge
+    app.component('Contributors', Contributors) // ADD this line
+    app.config.globalProperties.$contributors = contributors // OPTIONAL - global
   },
 }
 ```
@@ -105,7 +105,11 @@ The `VPBadge` entries are only required if you are using the VitePress [Badge](h
 
 6. Finally, add the `<Contributors>` tag to your markdown or component.
 
-See the [Usage](#usage) for more details and review the additional [Options](#options).
+```markdown
+<Contributors :contributors="$contributors" />
+```
+
+See the [Usage](#usage) for more details...
 
 ## Usage
 
@@ -125,19 +129,19 @@ import contributors from '../.vitepress/contributors.json'
 <Contributors heading="Contributors" :contributors="contributors" />
 ```
 
-Check out the [Options](#options) to customize the look and feel.
+See the [Options](#options) for customization.
 
 ## Options
 
 Only the `:contributors` parameter is required, everything else is optional.
 
-| Property&nbsp;Name |   Default    |  Type  | Description&nbsp;of&nbsp;Value                                                             |
-| :----------------- | :----------: | :----: | :----------------------------------------------------------------------------------------- |
-| **:contributors**  | **Required** | Array  | `contributors.json` file import data                                                       |
-| **max-users**      |      -       | String | Max Number of users to display                                                             |
-| **heading**        |      -       | String | Optional Heading text                                                                      |
-| **size**           |     `64`     | String | Size of Icons in pixels                                                                    |
-| **margin**         |      -       | String | [CSS margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) string for container |
+| Parameter         |   Default    |  Type  | Description&nbsp;of&nbsp;the&nbsp;Parameter                                                |
+| :---------------- | :----------: | :----: | :----------------------------------------------------------------------------------------- |
+| **:contributors** | **Required** | Array  | `contributors.json` file import data                                                       |
+| **max-users**     |      -       | String | Max Number of users to display                                                             |
+| **heading**       |      -       | String | Optional Heading text                                                                      |
+| **size**          |     `64`     | String | Size of Icons in pixels                                                                    |
+| **margin**        |      -       | String | [CSS margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) string for container |
 
 Example with all arguments:
 
