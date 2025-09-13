@@ -128,7 +128,7 @@ Note, you may need to modify the `../contributors.json` import location to match
 If your VitePress configuration directory is located at `.vitepress` then the default output
 path of `.vitepress/contributors.json` will import from the relative path `../contributors.json`.
 
-If you are not importing `contributors` as a Global, this path will be relative to the file you are importing it in.
+If you are not importing `contributors` as a Global, this path will be relative to the file you are importing it in.  
 See the [Usage](#usage) for more details.
 
 ---
@@ -201,7 +201,7 @@ For general help or to request a feature:
 
 If you are experiencing an issue/bug or getting unexpected results:
 
-- Report an Issue: https://github.com/cssnr/vitepress-plugin-contributors/issues
+- Report an Issue: [cssnr/vitepress-plugin-contributors/issues](https://github.com/cssnr/vitepress-plugin-contributors/issues)
 - Chat with us on Discord: https://discord.gg/wXy6m2X8wY
 - Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=VitePress%20Plugin%20Contributors)
 
