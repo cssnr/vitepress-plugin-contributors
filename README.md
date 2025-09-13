@@ -54,8 +54,6 @@ If you don't add the `postinstall` script you need to add `npm run get-contribut
 
 <details><summary>Click Here to View Usage - <b>get-contributors</b></summary>
 
-&nbsp;
-
 Show help: `npx get-contributors -h`
 
 Basic usage, all contributors excluding bot users.
@@ -94,7 +92,7 @@ Only the `user/repo` is required. All other arguments are optional.
 npm run get-contributors
 ```
 
-Alternatively, if you did not add the `get-contributors` script from step 2.
+Alternatively, if you did not add the `get-contributors` script from step #2.
 
 ```shell
 npx get-contributors user/repo
@@ -131,6 +129,7 @@ If your VitePress configuration directory is located at `.vitepress` then the de
 path of `.vitepress/contributors.json` will import from the relative path `../contributors.json`.
 
 If you are not importing `contributors` as a Global, this path will be relative to the file you are importing it in.
+See the [Usage](#usage) for more details.
 
 ---
 
@@ -161,6 +160,8 @@ import contributors from '../.vitepress/contributors.json'
 
 <Contributors :contributors="contributors" />
 ```
+
+The `contributors.json` file is relative to the file you are importing it in.
 
 See the [Options](#options) for more details...
 
