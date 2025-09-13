@@ -22,13 +22,18 @@
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-A [VitePress](https://vitepress.dev/) Plugin to Easily display repository Contributors.
+A [VitePress](https://vitepress.dev/) Plugin to Easily generate, update, and display repository Contributors.
 
-NPM Package: https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors
+This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors) includes two components that can be use together or individually.
+
+1. A [get-contributors](src/get-contributors.js) script to generate the `contributors.json` file.
+2. A [Contributors.vue](src/Contributors.vue) component to display the contributors your VitePress.
+
+Additionally, this includes detailed [Install](#install) instructions and [Support](#support).
 
 ## Install
 
-1. Install directly into your VitePress with npm.
+1. Install directly into your VitePress with [npm](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors).
 
 ```shell
 npm i @cssnr/vitepress-plugin-contributors
@@ -61,11 +66,11 @@ npx get-contributors user/repo -m 20 -f .vitepress/contributors.json -b
 
 Only the `user/repo` is required. All other arguments are optional.
 
-| Argument              | Default                        | Description                           |
-| --------------------- | ------------------------------ | ------------------------------------- |
-| `-m` or `--max-users` | 0                              | Max users to fetch. 0 is unlimited.   |
-| `-f` or `--file`      | `.vitepress/contributors.json` | Output file relative to project root. |
-| `-b` or `--bots`      | `false`                        | Include bot users in the results.     |
+| Argument&nbsp;Flag    | Default&nbsp;Value             | Description&nbsp;of&nbsp;the&nbsp;Argument |
+| :-------------------- | :----------------------------- | :----------------------------------------- |
+| `-f` or `--file`      | `.vitepress/contributors.json` | Output file relative to project root       |
+| `-m` or `--max-users` | `0`                            | Max users to fetch, 0 is unlimited         |
+| `-b` or `--bots`      | `false`                        | Include bot users in the results           |
 
 </details>
 
@@ -89,21 +94,23 @@ import DefaultTheme, { VPBadge } from 'vitepress/theme' // only if using VPBadge
 import Contributors from '@cssnr/vitepress-plugin-contributors' // ADD this line
 import '@cssnr/vitepress-plugin-contributors/style.css' // ADD this line
 
-import contributors from '../contributors.json' // OPTIONAL - global
+import contributors from '../contributors.json' // OPTIONAL - Global
 
 export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
     app.component('Badge', VPBadge) // only if using VPBadge
     app.component('Contributors', Contributors) // ADD this line
-    app.config.globalProperties.$contributors = contributors // OPTIONAL - global
+    app.config.globalProperties.$contributors = contributors // OPTIONAL - Global
   },
 }
 ```
 
+Global: If you are unsure about this option, add these lines for simplicity...
+
 The `VPBadge` entries are only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge).
 
-6. Finally, add the `<Contributors>` tag to your markdown or component.
+6. Finally, use the [Contributors.vue](src/Contributors.vue) component in your markdown.
 
 ```markdown
 <Contributors :contributors="$contributors" />
