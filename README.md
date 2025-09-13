@@ -22,13 +22,18 @@
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-A [VitePress](https://vitepress.dev/) Plugin to Easily display repository Contributors.
+A [VitePress](https://vitepress.dev/) Plugin to Easily generate, update and display repository Contributors.
+
+This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors) includes two components that can be use together or individually.
+
+1. [get-contributors](src/get-contributors.js) - script to generate the `contributors.json` file.
+2. [Contributors.vue](src/Contributors.vue) - component to display the contributors in VitePress.
+
+Additionally, this includes detailed [Install](#install) guide, plus [Support](#support).
 
 ## Install
 
-NPM Package: https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors
-
-1. Install directly into your VitePress with.
+1. Install directly into your VitePress with [npm](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors).
 
 ```shell
 npm i @cssnr/vitepress-plugin-contributors
@@ -39,11 +44,15 @@ npm i @cssnr/vitepress-plugin-contributors
 ```json
 {
   "scripts": {
-    "postinstall": "npm run get-contributors",
-    "get-contributors": "npx get-contributors cssnr/stack-deploy-action"
+    "get-contributors": "npx get-contributors user/repo",
+    "postinstall": "npm run get-contributors"
   }
 }
 ```
+
+If you don't add the `postinstall` script you need to add `npm run get-contributors` to your build.
+
+<details><summary>Click Here to View Usage - <b>get-contributors</b></summary>
 
 Basic usage, all contributors excluding bot users.
 
@@ -59,13 +68,17 @@ npx get-contributors user/repo -m 20 -f .vitepress/contributors.json -b
 
 Only the `user/repo` is required. All other arguments are optional.
 
-| Argument              | Default                        | Description                           |
-| --------------------- | ------------------------------ | ------------------------------------- |
-| `-m` or `--max-users` | 0                              | Max users to fetch. 0 is unlimited.   |
-| `-f` or `--file`      | `.vitepress/contributors.json` | Output file relative to project root. |
-| `-b` or `--bots`      | `false`                        | Include bot users in the results.     |
+| Argument&nbsp;Flag    | Default&nbsp;Value             | Description&nbsp;of&nbsp;the&nbsp;Argument |
+| :-------------------- | :----------------------------- | :----------------------------------------- |
+| `-f` or `--file`      | `.vitepress/contributors.json` | Output file relative to project root       |
+| `-m` or `--max-users` | `0`                            | Max users to fetch, 0 is unlimited         |
+| `-b` or `--bots`      | `false`                        | Include bot users in the results           |
 
-3. Add the `contributors.json` file location to your `.gitignore` as it's a generated file.
+---
+
+</details>
+
+3. Add the `contributors.json` file location to your `.gitignore`.
 
 ```gitignore
 .vitepress/contributors.json
@@ -77,38 +90,44 @@ Only the `user/repo` is required. All other arguments are optional.
 npm run get-contributors
 ```
 
-5. Then import it in your `.vitepress/theme/index.js`.
+5. Import the components in your `.vitepress/theme/index.js`.
 
 ```javascript
-import DefaultTheme, { VPBadge } from 'vitepress/theme' // required for Badge
+import DefaultTheme, { VPBadge } from 'vitepress/theme' // only if using VPBadge
 
-import Contributors from '@cssnr/vitepress-plugin-contributors' // add this line
-import '@cssnr/vitepress-plugin-contributors/style.css' // add this line
+import Contributors from '@cssnr/vitepress-plugin-contributors' // ADD this line
+import '@cssnr/vitepress-plugin-contributors/style.css' // ADD this line
 
-import contributors from '../contributors.json' // OPTIONAL - add to make global
+import contributors from '../contributors.json' // OPTIONAL - Global
 
 export default {
   ...DefaultTheme,
   enhanceApp({ app }) {
-    app.component('Badge', VPBadge) // required for Badge
-    app.component('Contributors', Contributors) // add this line
-    app.config.globalProperties.$contributors = contributors // OPTIONAL - add to make global
+    app.component('Badge', VPBadge) // only if using VPBadge
+    app.component('Contributors', Contributors) // ADD this line
+    app.config.globalProperties.$contributors = contributors // OPTIONAL - Global
   },
 }
 ```
 
-The `VPBadge` entries are only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge).
+`Global` - If you are unsure about this, add these lines for simplicity.
 
-6. Finally, add the `<Contributors>` tag to your markdown or component.
+`VPBadge` - Only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge).
 
-See the [Usage](#usage) for more details and review the additional [Options](#options)...
+6. Finally, use the [Contributors.vue](src/Contributors.vue) component in your markdown.
+
+```markdown
+<Contributors :contributors="$contributors" />
+```
+
+See the [Usage](#usage) for more details...
 
 ## Usage
 
 If you added `contributors` as a global component, you only need the `<Contributors>` tag.
 
 ```markdown
-<Contributors heading="Contributors" :contributors="$contributors" />
+<Contributors :contributors="$contributors" />
 ```
 
 Otherwise, import the `contributors.json` and add a `<Contributors>` tag.
@@ -118,27 +137,44 @@ Otherwise, import the `contributors.json` and add a `<Contributors>` tag.
 import contributors from '../.vitepress/contributors.json'
 </script>
 
-<Contributors heading="Contributors" :contributors="contributors" />
+<Contributors :contributors="contributors" />
 ```
+
+See the [Options](#options) for more details...
 
 ## Options
 
-| Property&nbsp;Name |   Default    |  Type  | Description&nbsp;of&nbsp;Value  |
-| :----------------- | :----------: | :----: | :------------------------------ |
-| **:contributors**  | **Required** | Array  | Contributors.json file import   |
-| **heading**        |      -       | String | Optional Heading Text           |
-| **size**           |     `64`     | String | Size of Icons in Pixels         |
-| **margin**         |      -       | String | CSS Margin String for Container |
+Only the `:contributors` parameter is required, everything else is optional.
+
+| Parameter         |   Default    |  Type  | Description&nbsp;of&nbsp;the&nbsp;Parameter                                                |
+| :---------------- | :----------: | :----: | :----------------------------------------------------------------------------------------- |
+| **:contributors** | **Required** | Array  | `contributors.json` file import data                                                       |
+| **max-users**     |      -       | String | Max Number of users to display                                                             |
+| **heading**       |      -       | String | Optional Heading text                                                                      |
+| **size**          |     `64`     | String | Size of Icons in pixels                                                                    |
+| **margin**        |      -       | String | [CSS margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) string for container |
+
+Example with all arguments.
+
+```markdown
+<Contributors
+    :contributors="$contributors"
+    heading="Contributors"
+    max-users="100"
+    size="48"
+    margin="36px 0 96px"
+/>
+```
 
 ## Support
 
 Please let us know if you run into any [issues](https://github.com/cssnr/vitepress-plugin-contributors/issues)
-or want to see [new features](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests)...
+or want to see [a new feature](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests).
 
 For general help or to request a feature:
 
-- Q&A Discussion: https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/q-a
-- Request a Feature: https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests
+- Q&A Discussion: [discussions/q-a](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/q-a)
+- Request a Feature: [discussions/feature-requests](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests)
 
 If you are experiencing an issue/bug or getting unexpected results:
 
