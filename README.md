@@ -22,7 +22,7 @@
 - [Support](#Support)
 - [Contributing](#Contributing)
 
-A [VitePress](https://vitepress.dev/) Plugin to Easily generate, update, and display repository Contributors.
+A [VitePress](https://vitepress.dev/) Plugin to Easily generate, update and display repository Contributors.
 
 This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors) includes two components that can be use together or individually.
 
@@ -106,9 +106,9 @@ export default {
 }
 ```
 
-Global: If you are unsure about this option, add these lines for simplicity...
+`Global` - If you are unsure about this, add these lines for simplicity.
 
-The `VPBadge` entries are only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge).
+`VPBadge` - Only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge).
 
 6. Finally, use the [Contributors.vue](src/Contributors.vue) component in your markdown.
 
