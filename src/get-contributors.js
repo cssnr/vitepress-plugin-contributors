@@ -23,7 +23,7 @@ const { program } = require('commander')
     try {
         data = await getContributors(repo, maxUsers, !options.bots)
     } catch (e) {
-        console.warn(e)
+        console.error(e)
     }
     if (maxUsers > 0) data = data.slice(0, maxUsers)
     console.log(`get-contributors - total contributors: ${data.length}`)
