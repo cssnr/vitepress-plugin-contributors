@@ -19,6 +19,7 @@
 - [Install](#Install)
 - [Usage](#Usage)
 - [Options](#Options)
+- [Demos](#Demos)
 - [Support](#Support)
 - [Contributing](#Contributing)
 
@@ -29,7 +30,7 @@ This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributor
 1. [get-contributors](src/get-contributors.js) - script to generate the `contributors.json` file.
 2. [Contributors.vue](src/Contributors.vue) - component to display the contributors in VitePress.
 
-Also include is a detailed [Install](#install) guide with [Support](#support) available.
+Also includes a detailed [Install](#install) guide with available [Support](#support).
 
 ## Install
 
@@ -198,6 +199,16 @@ Example with all arguments.
 />
 ```
 
+## Demos
+
+The plugin is running on these pages:
+
+- https://django-files.github.io/ and [/team](https://django-files.github.io/team)
+- https://docker-deploy.cssnr.com/
+- https://portainer-deploy.cssnr.com/
+
+If you have a live demo, let us know and we will post it here...
+
 ## Support
 
 Please let us know if you run into any [issues](https://github.com/cssnr/vitepress-plugin-contributors/issues)
@@ -217,9 +228,6 @@ If you are experiencing an issue/bug or getting unexpected results:
 # Contributing
 
 For instructions on creating a PR, see the [CONTRIBUTING.md](#contributing-ov-file).
-
-Please consider making a donation to support the development of this project
-and [additional](https://cssnr.com/) open source projects.
 
 [![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cssnr)
 
