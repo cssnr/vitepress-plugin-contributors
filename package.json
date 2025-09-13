@@ -35,7 +35,7 @@
     "commander": "^14.0.1"
   },
   "peerDependencies": {
-    "vitepress": "^1.0.0 || ^2.0.0-alpha",
+    "vitepress": "1.x || 2.x",
     "vue": "^3.0.0"
   },
   "devDependencies": {
