@@ -26,10 +26,10 @@ A [VitePress](https://vitepress.dev/) Plugin to Easily generate, update and disp
 
 This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors) includes two components that can be use together or individually.
 
-1. A [get-contributors](src/get-contributors.js) script to generate the `contributors.json` file.
-2. A [Contributors.vue](src/Contributors.vue) component to display the contributors your VitePress.
+1. [get-contributors](src/get-contributors.js) - script to generate the `contributors.json` file.
+2. [Contributors.vue](src/Contributors.vue) - component to display the contributors in VitePress.
 
-Additionally, this includes detailed [Install](#install) instructions and [Support](#support).
+Additionally, this includes detailed [Install](#install) guide, plus [Support](#support).
 
 ## Install
 
@@ -44,11 +44,13 @@ npm i @cssnr/vitepress-plugin-contributors
 ```json
 {
   "scripts": {
-    "postinstall": "npm run get-contributors",
-    "get-contributors": "npx get-contributors user/repo"
+    "get-contributors": "npx get-contributors user/repo",
+    "postinstall": "npm run get-contributors"
   }
 }
 ```
+
+If you don't add the `postinstall` script you need to add `npm run get-contributors` to your build.
 
 <details><summary>Click Here to View Usage - <b>get-contributors</b></summary>
 
@@ -71,6 +73,8 @@ Only the `user/repo` is required. All other arguments are optional.
 | `-f` or `--file`      | `.vitepress/contributors.json` | Output file relative to project root       |
 | `-m` or `--max-users` | `0`                            | Max users to fetch, 0 is unlimited         |
 | `-b` or `--bots`      | `false`                        | Include bot users in the results           |
+
+---
 
 </details>
 
@@ -150,7 +154,7 @@ Only the `:contributors` parameter is required, everything else is optional.
 | **size**          |     `64`     | String | Size of Icons in pixels                                                                    |
 | **margin**        |      -       | String | [CSS margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) string for container |
 
-Example with all arguments:
+Example with all arguments.
 
 ```markdown
 <Contributors
