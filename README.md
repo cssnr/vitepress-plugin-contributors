@@ -173,8 +173,8 @@ or want to see [a new feature](https://github.com/cssnr/vitepress-plugin-contrib
 
 For general help or to request a feature:
 
-- Q&A Discussion: https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/q-a
-- Request a Feature: https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests
+- Q&A Discussion: [discussions/q-a](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/q-a)
+- Request a Feature: [discussions/feature-requests](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests)
 
 If you are experiencing an issue/bug or getting unexpected results:
 
