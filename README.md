@@ -54,6 +54,8 @@ If you don't add the `postinstall` script you need to add `npm run get-contribut
 
 <details><summary>Click Here to View Usage - <b>get-contributors</b></summary>
 
+View the help with: `npm run get-contributors -h`
+
 Basic usage, all contributors excluding bot users.
 
 ```shell

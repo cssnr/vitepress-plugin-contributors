@@ -5,10 +5,10 @@ const { program } = require('commander')
 
 ;(async () => {
     program
+        .argument('<repository>', 'Full Repository (example: "user/repo")')
         .option('-f, --file <filepath>', 'Output File', '.vitepress/contributors.json')
         .option('-m, --max-users <number>', 'Max Contributors, 0 is unlimited', '0')
         .option('-b, --bots', 'Include Bot Users', false)
-        .argument('<repository>', 'Full Repository (example: "user/repo")')
 
     program.parse()
 
