@@ -56,7 +56,7 @@ If you don't add the `postinstall` script you need to add `npm run get-contribut
 
 &nbsp;
 
-Display Help: `npx get-contributors -h`
+Show help: `npx get-contributors -h`
 
 Basic usage, all contributors excluding bot users.
 
@@ -94,7 +94,7 @@ Only the `user/repo` is required. All other arguments are optional.
 npm run get-contributors
 ```
 
-Alternatively, if you did not add the `get-contributors` script from step 2:
+Alternatively, if you did not add the `get-contributors` script from step 2.
 
 ```shell
 npx get-contributors user/repo
@@ -124,11 +124,17 @@ export default {
 
 `VPBadge` - Only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge).
 
+<details><summary>More Details on the <b>contributors.json</b> path</summary>
+
 Note, you may need to modify the `../contributors.json` import location to match your setup.
 If your VitePress configuration directory is located at `.vitepress` then the default output
 path of `.vitepress/contributors.json` will import from the relative path `../contributors.json`.
 
 If you are not importing `contributors` as a Global, this path will be relative to the file you are importing it in.
+
+---
+
+</details>
 
 6. Finally, use the [Contributors.vue](src/Contributors.vue) component in your markdown.
 
