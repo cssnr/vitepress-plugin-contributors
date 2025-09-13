@@ -76,6 +76,13 @@ Only the `user/repo` is required. All other arguments are optional.
 | `-m` or `--max-users` | `0`                            | Max users to fetch, 0 is unlimited         |
 | `-b` or `--bots`      | `false`                        | Include bot users in the results           |
 
+Note: This script makes 1 request to the GitHub API for every 100 contributors on the repository (or `max-users`).
+Because of this if you have a lot of contributors (200+) running this back-to-back may hit
+the [GitHub rate limit](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-primary-rate-limits) for unauthenticated requests, which is 60 requests per hour.
+If this occurs the script will generate a partial or empty contributors so development can continue.
+
+**This does not affect GitHub Action runs which are authenticated with the `GTIHUB_TOKEN`.**
+
 ---
 
 </details>
