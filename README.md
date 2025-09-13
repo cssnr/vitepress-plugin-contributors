@@ -54,7 +54,7 @@ If you don't add the `postinstall` script you need to add `npm run get-contribut
 
 <details><summary>Click Here to View Usage - <b>get-contributors</b></summary>
 
-View the help with: `npm run get-contributors -h`
+&nbsp;
 
 Basic usage, all contributors excluding bot users.
 
@@ -75,6 +75,8 @@ Only the `user/repo` is required. All other arguments are optional.
 | `-f` or `--file`      | `.vitepress/contributors.json` | Output file relative to project root       |
 | `-m` or `--max-users` | `0`                            | Max users to fetch, 0 is unlimited         |
 | `-b` or `--bots`      | `false`                        | Include bot users in the results           |
+
+Show Help: `npx get-contributors -h`
 
 ---
 
