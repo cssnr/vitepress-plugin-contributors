@@ -32,6 +32,8 @@ This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributor
 
 Also includes a detailed [Install](#install) guide with available [Support](#support).
 
+[![VitePress Contributors](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/vp-contributors/shots/contributors16.jpg)](https://github.com/cssnr/vitepress-plugin-contributors?tab=readme-ov-file#readme)
+
 ## Install
 
 1. Install directly into your VitePress from [npmjs](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors).
@@ -75,7 +77,8 @@ Only the `user/repo` is required. All other arguments are optional.
 | :-------------------- | :----------------------------- | :----------------------------------------- |
 | `-f` or `--file`      | `.vitepress/contributors.json` | Output file relative to project root       |
 | `-m` or `--max-users` | `0`                            | Max users to fetch, 0 is unlimited         |
-| `-b` or `--bots`      | `false`                        | Include bot users in the results           |
+| `-b` or `--bots`      | -                              | Include bot users in the results           |
+| `-k` or `--keys`      | `login,avatar_url`             | Contributor keys to save to file           |
 
 Note: This script makes 1 request to the GitHub API for every 100 contributors on the repository (or `max-users`).
 Because of this if you have a lot of contributors (200+) running this back-to-back may hit
@@ -192,12 +195,14 @@ Example with all arguments.
 ```markdown
 <Contributors
     :contributors="$contributors"
-    heading="Contributors"
-    max-users="100"
+    heading="VitePress Contributors"
+    max-users="98"
     size="48"
     margin="36px 0 96px"
 />
 ```
+
+[![VitePress Contributors](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/vp-contributors/shots/contributors98.jpg)](https://github.com/cssnr/vitepress-plugin-contributors?tab=readme-ov-file#readme)
 
 ## Demos
 
@@ -207,7 +212,7 @@ The plugin is running on these pages:
 - https://docker-deploy.cssnr.com/
 - https://portainer-deploy.cssnr.com/
 
-If you have a live demo, let us know and we will post it here...
+If you have a live demo, [let us know](#support) and we will post it here...
 
 ## Support
 

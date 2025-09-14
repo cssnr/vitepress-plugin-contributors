@@ -23,16 +23,16 @@ const imageStyle = { width: `${props.size}px`, height: `${props.size}px` }
     <div class="vp-contributors-heading" v-if="props.heading">{{ props.heading }}</div>
     <div class="vp-contributors-images">
       <a
-        v-for="{ username, avatar } of contributors"
-        :key="username"
-        :aria-label="`${username} on GitHub`"
-        :href="`https://github.com/${username}`"
+        v-for="{ login, avatar_url } of contributors"
+        :key="login"
+        :aria-label="`${login} on GitHub`"
+        :href="`https://github.com/${login}`"
         target="_blank"
         rel="noopener noreferrer"
       >
         <img
-          :alt="username"
-          :src="avatar"
+          :alt="login"
+          :src="avatar_url"
           :width="props.size"
           :height="props.size"
           :style="imageStyle"
