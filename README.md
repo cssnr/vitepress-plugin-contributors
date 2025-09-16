@@ -11,7 +11,7 @@
 [![GitHub Discussions](https://img.shields.io/github/discussions/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/discussions)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/vitepress-plugin-contributors?style=flat&logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/stargazers)
 [![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&label=org%20stars)](https://cssnr.github.io/)
-[![Discord](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
+[![Disco](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-72a5f2?logo=kofi&label=support)](https://ko-fi.com/cssnr)
 
 # VitePress Plugin Contributors
@@ -229,6 +229,12 @@ If you are experiencing an issue/bug or getting unexpected results:
 - Report an Issue: [cssnr/vitepress-plugin-contributors/issues](https://github.com/cssnr/vitepress-plugin-contributors/issues)
 - Chat with us on Discord: https://discord.gg/wXy6m2X8wY
 - Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=VitePress%20Plugin%20Contributors)
+
+### More VitePress Plugins
+
+- [SwiperJS](https://github.com/cssnr/vitepress-swiper) - Photo Gallery
+- [Contributors](https://github.com/cssnr/vitepress-plugin-contributors) - GitHub Contributors
+- [Copy Button](https://github.com/cssnr/vitepress-plugin-copybutton) - Copy Text Button
 
 # Contributing
 
