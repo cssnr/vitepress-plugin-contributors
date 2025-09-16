@@ -12,11 +12,10 @@ export default defineConfig({
         },
         cssCodeSplit: true,
         rollupOptions: {
-            external: ['vue', 'vitepress'],
+            external: ['vue'],
             output: {
                 globals: {
                     vue: 'Vue',
-                    vitepress: 'VitePress',
                 },
             },
         },
