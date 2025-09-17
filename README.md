@@ -5,6 +5,7 @@
 [![GitHub Deployments](https://img.shields.io/github/deployments/cssnr/vitepress-plugin-contributors/npm?logo=github&label=deploy)](https://github.com/cssnr/vitepress-plugin-contributors/deployments)
 [![Release](https://img.shields.io/github/actions/workflow/status/cssnr/vitepress-plugin-contributors/release.yaml?logo=cachet&label=release)](https://github.com/cssnr/vitepress-plugin-contributors/actions/workflows/release.yaml)
 [![Lint](https://img.shields.io/github/actions/workflow/status/cssnr/vitepress-plugin-contributors/lint.yaml?logo=cachet&label=lint)](https://github.com/cssnr/vitepress-plugin-contributors/actions/workflows/lint.yaml)
+[![GitHub Contributors](https://img.shields.io/github/contributors/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/graphs/contributors)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/pulse)
 [![GitHub Repo Size](https://img.shields.io/github/repo-size/cssnr/vitepress-plugin-contributors?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/cssnr/vitepress-plugin-contributors?tab=readme-ov-file#readme)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/cssnr/vitepress-plugin-contributors?logo=htmx&logoColor=white)](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src/Contributors.vue)
@@ -30,7 +31,7 @@ This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributor
 1. [get-contributors](src/get-contributors.js) - script to generate the `contributors.json` file.
 2. [Contributors.vue](src/Contributors.vue) - component to display the contributors in VitePress.
 
-Also includes a detailed [Install](#install) guide with available [Support](#support).
+Also includes a detailed [Installation](#install) guide with available [Support](#support).
 
 [![VitePress Contributors](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/vp-contributors/shots/contributors16.jpg)](https://github.com/cssnr/vitepress-plugin-contributors?tab=readme-ov-file#readme)
 
@@ -93,7 +94,7 @@ If this occurs the script will generate a partial or empty contributors so devel
 
 3. Add the `contributors.json` file location to your `.gitignore`.
 
-```gitignore
+```txt
 .vitepress/contributors.json
 ```
 
@@ -238,7 +239,12 @@ If you are experiencing an issue/bug or getting unexpected results:
 
 # Contributing
 
-For instructions on creating a PR, see the [CONTRIBUTING.md](#contributing-ov-file).
+All contributions are welcome including [bug reports](https://github.com/cssnr/vitepress-plugin-contributors/issues), [feature requests](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests), or pull requests.
+
+For instructions on creating a PR for the [Package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors) or [Documentation](https://vitepress-contributors.cssnr.com/),
+see the [CONTRIBUTING.md](#contributing-ov-file).
+
+Please consider making a donation to support the development of this project and additional open source projects.
 
 [![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cssnr)
 
