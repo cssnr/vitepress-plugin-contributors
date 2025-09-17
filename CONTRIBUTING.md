@@ -1,5 +1,9 @@
 # Contributing
 
+- [Workflow](#Workflow)
+- [Package](#Package)
+- [Documentation](#Documentation)
+
 Contributions are welcome for both the [Package](#package) and the [Documentation](#documentation) site.
 
 You can follow the same [Workflow](#workflow) to make contributions to both.
@@ -8,15 +12,15 @@ You can follow the same [Workflow](#workflow) to make contributions to both.
 
 1. Fork the repository.
 2. Create a branch in your fork.
-3. Make your changes to the [Package](#package) and/or [Documentation](#documentation).
-4. Create a PR to the source repository.
+3. Make your changes to the [Package](#package) or [Docs](#documentation).
+4. Create a PR back to the source repository.
 5. Verify all the checks are passing.
 6. Complete any applicable tasks.
 7. Make sure to keep your branch up-to-date.
 
 ## Package
 
-Everything is in the [src](src) directory.
+Everything is in the [src](src) directory. To get started install the package.
 
 ```shell
 npm install
