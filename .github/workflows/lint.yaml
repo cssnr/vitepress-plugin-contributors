@@ -75,4 +75,4 @@ jobs:
       - name: "Verify Docs Build"
         if: steps.docs-changed.outputs.any_changed == 'true'
         run: |
-          npm run build
+          npm run docs:build
