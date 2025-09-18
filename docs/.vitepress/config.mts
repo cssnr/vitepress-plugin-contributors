@@ -13,7 +13,7 @@ const settings = {
   svg: '/images/svg.png',
   image: '/images/logo.png',
   image32: '/images/logo32.png',
-  color: '#0064FC',
+  color: '#3094FF',
   source_repo: 'https://github.com/cssnr/vitepress-plugin-contributors',
   npm_link: 'https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors',
 }
@@ -50,10 +50,10 @@ export default defineConfig({
   title: settings.title,
   description: settings.description.short,
   head: [
+    ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     ['link', { rel: 'icon', type: 'image/svg', sizes: 'any', href: settings.svg }],
     ['link', { rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180', href: settings.image }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: settings.image32 }],
-    ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 
     ['meta', { name: 'darkreader-lock' }],
 
@@ -154,7 +154,7 @@ export default defineConfig({
       // options: {
       //   appId: '',
       //   apiKey: '',
-      //   indexName: 'vitepress-contributors-docs',
+      //   indexName: 'vitepress-contributors',
       // },
     },
 

@@ -26,7 +26,7 @@ Everything is in the [src](src) directory. To get started install the package.
 npm install
 ```
 
-The [Documentation](#documentation) site runs the [Contributors.vue](src/Contributors.vue) file from source.
+The [Documentation](#documentation) site runs the [Contributors.vue](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src/Contributors.vue) file from source.
 This is the easiest way to test changes live using vite hot module reload support.
 
 Alternatively, you can use either [npm link](https://docs.npmjs.com/cli/v11/commands/npm-link) or install it locally with:
