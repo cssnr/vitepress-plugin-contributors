@@ -149,13 +149,13 @@ export default defineConfig({
     },
 
     search: {
-      provider: 'local',
-      // provider: 'algolia',
-      // options: {
-      //   appId: '',
-      //   apiKey: '',
-      //   indexName: 'vitepress-contributors',
-      // },
+      // provider: 'local',
+      provider: 'algolia',
+      options: {
+        appId: 'VQ1HP3XZZL',
+        apiKey: 'a3576e3bfb1c988d86167e5b6f19b7a1',
+        indexName: 'vitepress-contributors',
+      },
     },
 
     // footer: {

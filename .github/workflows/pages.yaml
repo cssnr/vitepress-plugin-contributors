@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  CRAWLER_ID: ""
+  CRAWLER_ID: "96055f1d-8dac-42f1-83f3-cf3cfd9a88dc"
 
 permissions:
   contents: read
