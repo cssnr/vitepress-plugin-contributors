@@ -62,3 +62,43 @@ bun i commander
 :::
 
 See the [Get Contributors Documentation](../docs/get-contributors.md) for details on the `get-contributors` script.
+
+### Dependency Free
+
+If you need a dependency free version of `get-contributors.js` you can build one with [@vercel/ncc](https://www.npmjs.com/package/@vercel/ncc).
+
+::: code-group
+
+```shell [npm]
+npm i -g @vercel/ncc
+```
+
+```shell [pnpm]
+pnpm i -g @vercel/ncc
+```
+
+```shell [yarn]
+yarn add -g @vercel/ncc
+```
+
+```shell [bun]
+bun i -g @vercel/ncc
+```
+
+:::
+
+Then you can build it like this.
+
+::: code-group
+
+```shell [Normal ~vscode-icons:file-type-shell~]
+ncc build src/get-contributors.js -o dist/get-contributors
+```
+
+```shell [Minified ~vscode-icons:file-type-shell~]
+ncc build -m src/get-contributors.js -o dist/get-contributors
+```
+
+:::
+
+The resulting `dist/get-contributors/index.js` can then be run without any dependencies.

@@ -2,7 +2,7 @@
 [![NPM Version](https://img.shields.io/npm/v/%40cssnr%2Fvitepress-plugin-contributors?logo=npm)](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors)
 [![GitHub Release Version](https://img.shields.io/github/v/release/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/releases)
 [![NPM Bundle Size](https://img.shields.io/bundlephobia/min/%40cssnr%2Fvitepress-plugin-contributors?logo=bookstack&logoColor=white)](https://bundlephobia.com/package/@cssnr/vitepress-plugin-contributors)
-[![Deployments NPM](https://img.shields.io/github/deployments/cssnr/vitepress-plugin-contributors/npm?logo=npm&label=release)](https://github.com/cssnr/vitepress-plugin-contributors/deployments/npm)
+[![Deployments NPM](https://img.shields.io/github/deployments/cssnr/vitepress-plugin-contributors/npm?logo=npm&label=deploy)](https://github.com/cssnr/vitepress-plugin-contributors/deployments/npm)
 [![Deployments Pages](https://img.shields.io/github/deployments/cssnr/vitepress-plugin-contributors/docs?logo=vitepress&logoColor=white&label=docs)](https://github.com/cssnr/vitepress-plugin-contributors/deployments/docs)
 [![WF Release](https://img.shields.io/github/actions/workflow/status/cssnr/vitepress-plugin-contributors/release.yaml?logo=cachet&label=release)](https://github.com/cssnr/vitepress-plugin-contributors/actions/workflows/release.yaml)
 [![WF Lint](https://img.shields.io/github/actions/workflow/status/cssnr/vitepress-plugin-contributors/lint.yaml?logo=cachet&label=lint)](https://github.com/cssnr/vitepress-plugin-contributors/actions/workflows/lint.yaml)
