@@ -34,7 +34,11 @@ This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributor
 
 Also includes a detailed [Installation](#install) guide with available [Support](#support).
 
-[![VitePress Contributors](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/vp-contributors/shots/contributors16.jpg)](https://github.com/cssnr/vitepress-plugin-contributors?tab=readme-ov-file#readme)
+[![VitePress Contributors](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/vp-contributors/shots/contributors16.jpg)](https://vitepress-contributors.cssnr.com/)
+
+> [!IMPORTANT]  
+> For **Up-to-Date** Documentation, please visit the website:  
+> https://vitepress-contributors.cssnr.com/
 
 ## Install
 
