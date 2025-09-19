@@ -81,9 +81,10 @@ export default defineConfig({
     siteTitle: settings.siteTitle,
     logo: settings.image32,
     nav: [
-      { text: 'Home', link: '/' },
+      // { text: 'Home', link: '/' },
       { text: 'Get Started', link: '/guides/get-started', activeMatch: '/guides/' },
       { text: 'Docs', link: '/docs/contributors', activeMatch: '/docs/' },
+      { text: 'Help', link: '/support' },
       {
         text: 'Links',
         items: [

@@ -17,9 +17,23 @@ This guide is a Work in Progress. <Badge type="warning">WIP</Badge>
 
 These are plugins I have developed and support.
 
-- [SwiperJS](https://github.com/cssnr/vitepress-swiper) - Photo Gallery
-- [Contributors](https://github.com/cssnr/vitepress-plugin-contributors) - GitHub Contributors
-- [Copy Button](https://github.com/cssnr/vitepress-plugin-copybutton) - Copy Text Button
+### SwiperJS Gallery
+
+Easily add a [SwiperJS](https://swiperjs.com/) photo gallery.
+
+[GitHub](https://github.com/cssnr/vitepress-swiper) - [NPM](https://www.npmjs.com/package/@cssnr/vitepress-swiper) - [Website](https://vitepress-swiper.cssnr.com/)
+
+### GitHub Contributors
+
+Easily display GitHub Contributors.
+
+[GitHub](https://github.com/cssnr/vitepress-plugin-contributors) - [NPM](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors) - [Website](https://vitepress-contributors.cssnr.com/)
+
+### CopyButton Helper
+
+Easily add a Copy Button to any text or heading. <CB />
+
+[GitHub](https://github.com/cssnr/vitepress-plugin-copybutton) - [NPM](https://www.npmjs.com/package/@cssnr/vitepress-plugin-copybutton) - [Website](https://vitepress-copybutton.cssnr.com/)
 
 ## Components
 
@@ -27,7 +41,7 @@ These are components I have made to use in my Projects.
 
 ### BrowserIcons
 
-Display browser icons from the [alrra/browser-logos/](https://github.com/alrra/browser-logos/) CDN assets.
+Display browser icons from the [alrra/browser-logos](https://github.com/alrra/browser-logos/) CDN assets.
 
 Source: [BrowserIcons.vue](https://github.com/cssnr/zipline-extension-docs/blob/master/.vitepress/theme/components/BrowserIcons.vue)
 
