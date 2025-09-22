@@ -1,3 +1,7 @@
+---
+pageClass: contributors-page
+---
+
 # Contributors
 
 Only the `:contributors` parameter is required, everything else is optional.
@@ -42,8 +46,8 @@ If you have a live demo, let us know and we will post it here...
 If you need more options, please [open a feature request](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests)
 :::
 
-<style module>
-table td:nth-child(1) {
+<style>
+.contributors-page table td:nth-child(1) {
   white-space: nowrap;
 }
 </style>
