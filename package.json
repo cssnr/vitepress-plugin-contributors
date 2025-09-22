@@ -56,7 +56,7 @@
     "@cssnr/vitepress-plugin-copybutton": "^0.0.2",
     "@vitejs/plugin-vue": "^6.0.1",
     "prettier": "^3.6.2",
-    "vite": "^7.1.5",
+    "vite": "^7.1.7",
     "vitepress": "^1.6.4",
     "vitepress-plugin-group-icons": "^1.6.3",
     "vue": "^3.5.21"
