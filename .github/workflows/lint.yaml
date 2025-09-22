@@ -33,10 +33,10 @@ jobs:
       #  run: |
       #    npm run lint
 
-      - name: "Prettier"
+      - name: "Prettier Check"
         if: ${{ !cancelled() }}
         run: |
-          npm run prettier
+          npm run prettier:check
 
       - name: "Yamllint"
         if: ${{ !cancelled() }}
@@ -76,5 +76,4 @@ jobs:
       - name: "Verify Docs Build"
         if: steps.docs-changed.outputs.any_changed == 'true'
         run: |
-          npm run get-contributors
-          npm run docs:build
+          npm run docs:deploy
