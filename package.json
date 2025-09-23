@@ -43,7 +43,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "build:contributors": "ncc build -m src/get-contributors.js -o dist/get-contributors",
+    "build:contributors": "npx ncc build -m src/get-contributors.js -o dist/get-contributors",
     "docs": "npm run docs:dev",
     "docs:build": "vitepress build docs",
     "docs:deploy": "npm run get-contributors && npm run docs:build",
