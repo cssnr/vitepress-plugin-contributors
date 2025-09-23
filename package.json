@@ -59,8 +59,8 @@
   },
   "devDependencies": {
     "@cssnr/vitepress-plugin-copybutton": "^0.0.2",
+    "@vercel/ncc": "^0.38.4",
     "@vitejs/plugin-vue": "^6.0.1",
-    "ncc": "^0.3.6",
     "prettier": "^3.6.2",
     "vite": "^7.1.7",
     "vitepress": "^1.6.4",
