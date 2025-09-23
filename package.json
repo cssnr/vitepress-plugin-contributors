@@ -43,6 +43,7 @@
   ],
   "scripts": {
     "build": "vite build",
+    "build:contributors": "ncc build -m src/get-contributors.js -o dist/get-contributors",
     "docs": "npm run docs:dev",
     "docs:build": "vitepress build docs",
     "docs:deploy": "npm run get-contributors && npm run docs:build",
@@ -59,6 +60,7 @@
   "devDependencies": {
     "@cssnr/vitepress-plugin-copybutton": "^0.0.2",
     "@vitejs/plugin-vue": "^6.0.1",
+    "ncc": "^0.3.6",
     "prettier": "^3.6.2",
     "vite": "^7.1.7",
     "vitepress": "^1.6.4",

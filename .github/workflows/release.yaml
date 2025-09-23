@@ -60,6 +60,11 @@ jobs:
         run: |
           npm publish --provenance --access public
 
+      - name: "Build Contributors"
+        continue-on-error: true
+        run: |
+          npm run build:contributors
+
       - name: "Upload to Actions"
         uses: actions/upload-artifact@v4
         continue-on-error: true
@@ -72,13 +77,25 @@ jobs:
         run: |
           zip -r dist.zip dist package.json README.md LICENSE
 
-      - name: "Upload to Release"
+      - name: "Upload Release"
         if: ${{ github.event_name == 'release' }}
-        uses: svenstaro/upload-release-action@v2
+        uses: cssnr/upload-release-action@master
         continue-on-error: true
         with:
-          file: dist.zip
-          tag: ${{ github.ref }}
+          files: |
+            dist.zip
+            dist/get-contributors/index.js
+          names: |
+            dist.zip
+            get-contributors.js
+
+      #- name: "Upload to Release"
+      #  if: ${{ github.event_name == 'release' }}
+      #  uses: svenstaro/upload-release-action@v2
+      #  continue-on-error: true
+      #  with:
+      #    file: dist.zip
+      #    tag: ${{ github.ref }}
 
       - name: "Update Release Notes Action"
         uses: smashedr/update-release-notes-action@master
