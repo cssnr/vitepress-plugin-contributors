@@ -22,6 +22,10 @@
     "url": "https://ko-fi.com/cssnr"
   },
   "license": "GPL-3.0-only",
+  "author": {
+    "name": "Shane",
+    "url": "https://cssnr.github.io/"
+  },
   "exports": {
     ".": {
       "import": "./dist/Contributors.es.js",
@@ -60,8 +64,5 @@
     "vitepress": "^1.6.4",
     "vitepress-plugin-group-icons": "^1.6.3",
     "vue": "^3.5.21"
-  },
-  "peerDependencies": {
-    "vue": "^3.0.0"
   }
 }
