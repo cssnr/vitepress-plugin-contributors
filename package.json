@@ -22,6 +22,10 @@
     "url": "https://ko-fi.com/cssnr"
   },
   "license": "GPL-3.0-only",
+  "author": {
+    "name": "Shane",
+    "url": "https://cssnr.github.io/"
+  },
   "exports": {
     ".": {
       "import": "./dist/Contributors.es.js",
@@ -39,6 +43,7 @@
   ],
   "scripts": {
     "build": "vite build",
+    "build:contributors": "npx ncc build -m src/get-contributors.js -o dist/get-contributors",
     "docs": "npm run docs:dev",
     "docs:build": "vitepress build docs",
     "docs:deploy": "npm run get-contributors && npm run docs:build",
@@ -54,14 +59,12 @@
   },
   "devDependencies": {
     "@cssnr/vitepress-plugin-copybutton": "^0.0.2",
+    "@vercel/ncc": "^0.38.4",
     "@vitejs/plugin-vue": "^6.0.1",
     "prettier": "^3.6.2",
     "vite": "^7.1.7",
     "vitepress": "^1.6.4",
     "vitepress-plugin-group-icons": "^1.6.3",
     "vue": "^3.5.21"
-  },
-  "peerDependencies": {
-    "vue": "^3.0.0"
   }
 }
