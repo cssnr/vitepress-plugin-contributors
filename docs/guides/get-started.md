@@ -97,7 +97,7 @@ See the [Get Contributors Documentation](../docs/get-contributors.md) for usage 
 
 ## Setup
 
-Add these 3 lines to your `index.[js,ts]`.
+Add these 3-5 lines to your `index.[js,ts]`.
 
 _If you don't have a [.vitepress/theme/index.js](https://vitepress.dev/guide/custom-theme#theme-resolving) file, create one._
 
@@ -121,9 +121,9 @@ export default {
 }
 ```
 
-Only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge). <Badge type="info">VPBadge</Badge>
-
 If you are unsure about this [usage](#usage), add these lines for simplicity. <Badge type="warning">Global</Badge>
+
+Only required if you are using the VitePress [Badge](https://vitepress.dev/reference/default-theme-badge#badge). <Badge type="info">VPBadge</Badge>
 
 ## Usage
 
