@@ -79,7 +79,7 @@ jobs:
 
       - name: "Upload Release"
         if: ${{ github.event_name == 'release' }}
-        uses: cssnr/upload-release-action@master
+        uses: cssnr/upload-release-action@v1
         continue-on-error: true
         with:
           files: |
