@@ -89,14 +89,6 @@ jobs:
             dist.zip
             get-contributors.js
 
-      #- name: "Upload to Release"
-      #  if: ${{ github.event_name == 'release' }}
-      #  uses: svenstaro/upload-release-action@v2
-      #  continue-on-error: true
-      #  with:
-      #    file: dist.zip
-      #    tag: ${{ github.ref }}
-
       - name: "Update Release Notes Action"
         uses: smashedr/update-release-notes-action@master
         continue-on-error: true

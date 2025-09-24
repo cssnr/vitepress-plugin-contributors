@@ -27,12 +27,20 @@ Limit to top 20 contributors, specify output file, and include bot users.
 npx get-contributors user/repo -m 20 -f .vitepress/contributors.json -b
 ```
 
-Note: This script makes 1 request to the GitHub API for every 100 contributors on the repository (or `max-users`).
+::: details GitHub API Rate Limit
+
+Note: Only applies to unauthenticated requests.
+
+This script makes 1 request to the GitHub API for every 100 contributors on the repository (or `max-users`).
 Because of this if you have a lot of contributors (200+) running this back-to-back may hit
 the [GitHub rate limit](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api#about-primary-rate-limits) for unauthenticated requests, which is 60 requests per hour.
 If this occurs the script will generate a partial or empty contributors so development can continue.
 
 **This does not affect GitHub Action runs which are authenticated with the `GTIHUB_TOKEN`.**
+
+:::
+
+For information on building, see the [Get Contributors Source](../guides/source#get-contributors-script) guide.
 
 &nbsp;
 

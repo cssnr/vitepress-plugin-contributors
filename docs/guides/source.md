@@ -37,9 +37,12 @@ See the [Contributors Documentation](../docs/contributors.md) for `<Contributors
 
 This can be [installed with npm](get-started.md#install), or you can manually copy it to your project.
 
-The source is available here: [get-contributors](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src/get-contributors.js)
+- Source: [src/get-contributors](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src/get-contributors.js)
+- Latest Release: [get-contributors.js](https://github.com/cssnr/vitepress-plugin-contributors/releases/latest/download/get-contributors.js)
 
-Make sure to install the dependency, [Commander.js](https://github.com/tj/commander.js).
+The **Latest Release** is a built, dependency free, version that can be run directly with [node](https://nodejs.org/).
+
+To use the **Source** directly you need to install the dependency, [commander.js](https://github.com/tj/commander.js).
 
 ::: code-group
 
@@ -63,9 +66,9 @@ bun i commander
 
 See the [Get Contributors Documentation](../docs/get-contributors.md) for details on the `get-contributors` script.
 
-### Dependency Free
+### Building
 
-If you need a dependency free version of `get-contributors.js` you can build one with [@vercel/ncc](https://www.npmjs.com/package/@vercel/ncc).
+To build `get-contributors.js` without dependencies you can use [@vercel/ncc](https://www.npmjs.com/package/@vercel/ncc).
 
 ::: code-group
 
