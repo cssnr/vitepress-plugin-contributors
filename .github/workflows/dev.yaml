@@ -23,7 +23,7 @@ jobs:
       contents: read
     with:
       build: "npm run docs:deploy"
-      path: ".vitepress/dist"
+      path: "docs/.vitepress/dist"
     secrets:
       webhook: ${{ secrets.DISCORD_WEBHOOK }}
 
