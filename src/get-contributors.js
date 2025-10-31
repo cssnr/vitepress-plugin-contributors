@@ -10,6 +10,7 @@ const { program } = require('commander')
         .option('-m, --max-users <number>', 'Max Contributors, 0 is unlimited', '0')
         .option('-k, --keys <list,of,keys>', 'Specify Keys to Save', 'login,avatar_url')
         .option('-b, --bots', 'Include Bot Users', false)
+        .option('-e, --error', 'Throw Errors', false)
 
     program.parse()
 
@@ -27,6 +28,9 @@ const { program } = require('commander')
         data = await getContributors(repo, maxUsers, !options.bots, keys)
     } catch (e) {
         console.error(e)
+        if (options.error) {
+            throw e
+        }
     }
     console.log(`get-contributors - total contributors: ${data.length}`)
     fs.writeFileSync(options.file, JSON.stringify(data), 'utf8')
