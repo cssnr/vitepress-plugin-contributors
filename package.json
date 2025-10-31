@@ -55,16 +55,16 @@
     "prettier:write": "npx prettier --write ."
   },
   "dependencies": {
-    "commander": "^14.0.1"
+    "commander": "^14.0.2"
   },
   "devDependencies": {
     "@cssnr/vitepress-plugin-copybutton": "^0.0.2",
     "@vercel/ncc": "^0.38.4",
     "@vitejs/plugin-vue": "^6.0.1",
     "prettier": "^3.6.2",
-    "vite": "^7.1.7",
+    "vite": "^7.1.12",
     "vitepress": "^1.6.4",
-    "vitepress-plugin-group-icons": "^1.6.3",
-    "vue": "^3.5.21"
+    "vitepress-plugin-group-icons": "^1.6.5",
+    "vue": "^3.5.22"
   }
 }

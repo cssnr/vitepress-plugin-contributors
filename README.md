@@ -79,12 +79,13 @@ npx get-contributors user/repo -m 20 -f .vitepress/contributors.json -b
 
 Only the `user/repo` is required. All other arguments are optional.
 
-| Argument&nbsp;Flag    | Default&nbsp;Value             | Description&nbsp;of&nbsp;the&nbsp;Argument |
-| :-------------------- | :----------------------------- | :----------------------------------------- |
-| `-f` or `--file`      | `.vitepress/contributors.json` | Output file relative to project root       |
-| `-m` or `--max-users` | `0`                            | Max users to fetch, 0 is unlimited         |
-| `-b` or `--bots`      | -                              | Include bot users in the results           |
-| `-k` or `--keys`      | `login,avatar_url`             | Contributor keys to save to file           |
+| Argument&nbsp;Flag | Default&nbsp;Value             | Description&nbsp;of&nbsp;the&nbsp;Argument |
+| :----------------- | :----------------------------- | :----------------------------------------- |
+| `-f`/`--file`      | `.vitepress/contributors.json` | Output file relative to project root       |
+| `-m`/`--max-users` | `0`                            | Max users to fetch, 0 is unlimited         |
+| `-b`/`--bots`      | -                              | Include bot users in the results           |
+| `-e`/`--error`     | -                              | Throw errors during generation             |
+| `-k`/`--keys`      | `login,avatar_url`             | Contributor keys to save to file           |
 
 Note: This script makes 1 request to the GitHub API for every 100 contributors on the repository (or `max-users`).
 Because of this if you have a lot of contributors (200+) running this back-to-back may hit
