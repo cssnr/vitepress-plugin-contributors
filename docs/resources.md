@@ -43,7 +43,7 @@ These are components I have made to use in my Projects.
 
 Display browser icons from the [alrra/browser-logos](https://github.com/alrra/browser-logos/) CDN assets.
 
-Source: [BrowserIcons.vue](https://github.com/cssnr/zipline-extension-docs/blob/master/.vitepress/theme/components/BrowserIcons.vue)
+Source: [BrowserIcons.vue](https://github.com/cssnr/zipline-extension/blob/master/docs/.vitepress/theme/components/BrowserIcons.vue)
 
 - https://zipline-extension.cssnr.com/ and [/guides/get-started](https://zipline-extension.cssnr.com/guides/get-started#install)
 - [https://django-files.github.io/clients/browser](https://django-files.github.io/clients/browser#install)

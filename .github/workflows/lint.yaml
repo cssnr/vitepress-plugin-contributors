@@ -70,8 +70,8 @@ jobs:
         uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62 # v47
         with:
           files: |
+            src/get-contributors.js
             package*.json
-            .src/get-contributors.js
 
       - name: "Verify Contributors Build"
         if: steps.contributors-changed.outputs.any_changed == 'true'
@@ -84,8 +84,8 @@ jobs:
         uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62 # v47
         with:
           files: |
-            package*.json
             docs/**
+            package*.json
 
       - name: "Verify Docs Build"
         if: steps.docs-changed.outputs.any_changed == 'true'

@@ -6,7 +6,7 @@ on:
     branches-ignore: [master]
     paths:
       - ".github/workflows/dev.yaml"
-      - "docs/.vitepress/**"
+      - ".vitepress/**"
       - "docs/**"
       - "package*.json"
 
