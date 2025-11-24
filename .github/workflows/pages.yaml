@@ -6,7 +6,7 @@ on:
     branches: [master]
     paths:
       - ".github/workflows/pages.yaml"
-      - "docs/.vitepress/**"
+      - ".vitepress/**"
       - "docs/**"
       - "package*.json"
 
@@ -52,7 +52,7 @@ jobs:
       - name: "Send Deploy Notification"
         if: ${{ !cancelled() }}
         continue-on-error: true
-        uses: sarisia/actions-status-discord@v1
+        uses: sarisia/actions-status-discord@b8381b25576cb341b2af39926ab42c5056cc44ed # v1.15.5
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           description: ${{ steps.deployment.outputs.page_url }}
@@ -81,7 +81,7 @@ jobs:
 
       - name: "Send Discord Notification"
         if: ${{ failure() }}
-        uses: sarisia/actions-status-discord@v1
+        uses: sarisia/actions-status-discord@b8381b25576cb341b2af39926ab42c5056cc44ed # v1.15.5
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           description: ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}

@@ -95,11 +95,11 @@ Then you can build it like this.
 ::: code-group
 
 ```shell [Normal ~vscode-icons:file-type-shell~]
-ncc build src/get-contributors.js -o dist/get-contributors
+npx ncc build src/get-contributors.js -o dist/get-contributors
 ```
 
 ```shell [Minified ~vscode-icons:file-type-shell~]
-ncc build -m src/get-contributors.js -o dist/get-contributors
+npx ncc build -m src/get-contributors.js -o dist/get-contributors
 ```
 
 :::
