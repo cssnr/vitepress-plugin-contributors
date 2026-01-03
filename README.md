@@ -8,7 +8,7 @@
 [![Workflow Lint](https://img.shields.io/github/actions/workflow/status/cssnr/vitepress-plugin-contributors/lint.yaml?logo=cachet&label=lint)](https://github.com/cssnr/vitepress-plugin-contributors/actions/workflows/lint.yaml)
 [![GitHub Repo Size](https://img.shields.io/github/repo-size/cssnr/vitepress-plugin-contributors?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/cssnr/vitepress-plugin-contributors?tab=readme-ov-file#readme)
 [![GitHub Top Language](https://img.shields.io/github/languages/top/cssnr/vitepress-plugin-contributors?logo=htmx&logoColor=white)](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/pulse)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/vitepress-plugin-contributors?logo=github&label=updated)](https://github.com/cssnr/vitepress-plugin-contributors/pulse)
 [![GitHub Issues](https://img.shields.io/github/issues/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/issues)
 [![GitHub Contributors](https://img.shields.io/github/contributors-anon/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/graphs/contributors)
 [![GitHub Discussions](https://img.shields.io/github/discussions/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/discussions)
@@ -18,6 +18,9 @@
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-72a5f2?logo=kofi&label=support)](https://ko-fi.com/cssnr)
 
 # VitePress Plugin Contributors
+
+<a title="VitePress Plugin Contributors" href="https://vitepress-contributors.cssnr.com/" target="_blank">
+<img alt="VitePress Plugin Contributors" align="right" width="128" height="auto" src="https://vitepress-contributors.cssnr.com/images/logo.png"></a>
 
 - [Install](#Install)
 - [Usage](#Usage)
@@ -35,13 +38,11 @@ This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributor
 
 Also includes a detailed [Installation](#install) guide with available [Support](#support).
 
-[![VitePress Contributors](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/vp-contributors/shots/contributors16.jpg)](https://vitepress-contributors.cssnr.com/)
-
-> [!IMPORTANT]  
-> For **Up-to-Date** Documentation, please visit the website:  
-> https://vitepress-contributors.cssnr.com/
+[![View Documentation](https://img.shields.io/badge/view_documentation-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://vitepress-contributors.cssnr.com/)
 
 ## Install
+
+[![View Install Guide](https://img.shields.io/badge/view_install_guide-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://vitepress-contributors.cssnr.com/guides/get-started#install)
 
 1. Install directly into your VitePress from [npmjs](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors).
 
@@ -63,6 +64,8 @@ npm i @cssnr/vitepress-plugin-contributors
 _If you don't add the `postinstall` script you need to add `get-contributors` to your build._
 
 <details><summary>Click Here to View Usage - <b>get-contributors</b></summary>
+
+[![View Get Contributors Docs](https://img.shields.io/badge/view_get_contributors_docs-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://vitepress-contributors.cssnr.com/docs/get-contributors)
 
 Show help: `npx get-contributors -h`
 
@@ -164,6 +167,8 @@ See the [Usage](#usage) for more details...
 
 ## Usage
 
+[![View Usage Guide](https://img.shields.io/badge/view_usage_guide-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://vitepress-contributors.cssnr.com/guides/get-started#usage)
+
 To use, simply add the `<Contributors>` tag to your markdown file (or component).
 
 If you added `contributors` as a global component, you only need the `<Contributors>` tag.
@@ -187,6 +192,8 @@ The `contributors.json` file is relative to the file you are importing it in.
 See the [Options](#options) for more details...
 
 ## Options
+
+[![View Contributors Docs](https://img.shields.io/badge/view_contributors_docs-blue?style=for-the-badge&logo=googledocs&logoColor=white)](https://vitepress-contributors.cssnr.com/docs/contributors)
 
 Only the `:contributors` parameter is required, everything else is optional.
 
