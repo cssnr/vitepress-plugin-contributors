@@ -91,6 +91,7 @@ jobs:
           mv dist/get-contributors/index.js
 
       - name: "Upload Release"
+        id: release
         if: ${{ github.event_name == 'release' }}
         uses: cssnr/upload-release-action@v1
         continue-on-error: true
@@ -101,6 +102,37 @@ jobs:
           names: |
             dist.zip
             get-contributors.js
+
+      - name: "Parse Release"
+        id: asset
+        if: ${{ github.event_name == 'release' }}
+        env:
+          assets: ${{ steps.release.outputs.assets }}
+        run: |
+          echo "url: ${{ fromJSON(steps.release.outputs.assets)[1].browser_download_url }}"
+          echo "url=${{ fromJSON(steps.release.outputs.assets)[1].browser_download_url }}" >> "$GITHUB_OUTPUT"
+          echo "digest: ${{ fromJSON(steps.release.outputs.assets)[1].digest }}"
+          sha256="$(echo "${{ fromJSON(steps.release.outputs.assets)[1].digest }}" | cut -d ":" -f 2)"
+          echo "sha256: ${sha256}"
+          if [ -z "${sha256}" ];then
+            echo "Missing sha256"
+            exit 1
+          fi
+          echo "sha256=${sha256}" >> "$GITHUB_OUTPUT"
+
+      - name: "Homebrew Action"
+        id: homebrew
+        if: ${{ github.event_name == 'release' && !github.event.release.prerelease }}
+        uses: cssnr/homebrew-action@master
+        with:
+          url: ${{ steps.asset.outputs.url }}
+          sha256: ${{ steps.asset.outputs.sha256 }}
+          repo: cssnr/homebrew-tap
+          formula: get-contributors.rb
+          message: Bump get-contributors.rb to ${{ github.ref_name }}
+          branch: master
+          app_id: 146360
+          app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
       - name: "Update Release Notes Action"
         uses: smashedr/update-release-notes-action@master
@@ -117,4 +149,4 @@ jobs:
         uses: sarisia/actions-status-discord@b8381b25576cb341b2af39926ab42c5056cc44ed # v1.15.5
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          description: ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}
+          description: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
