@@ -88,7 +88,6 @@ jobs:
         run: |
           chmod +x dist/get-contributors/index.js
           zip -r dist.zip dist package.json README.md LICENSE
-          mv dist/get-contributors/index.js
 
       - name: "Upload Release"
         id: release
