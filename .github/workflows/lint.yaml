@@ -2,9 +2,9 @@ name: "Lint"
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: [master]
   push:
+    branches: [master]
+  pull_request:
     branches: [master]
 
 jobs:
@@ -16,29 +16,27 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
-      - name: "Setup Node"
+      - name: "Setup Node 24"
         uses: actions/setup-node@v6
         with:
           node-version: 24
 
       - name: "Install"
         id: install
-        run: |
-          npm ci
+        run: npm ci
 
-      #- name: "ESLint"
+      #- name: "eslint"
       #  if: ${{ !cancelled() }}
       #  run: |
       #    npm run lint
 
-      - name: "Prettier Check"
+      - name: "prettier"
         if: ${{ !cancelled() }}
-        run: |
-          npm run prettier:check
+        run: npm run prettier:check
 
-      - name: "Yamllint"
+      - name: "yamllint"
         if: ${{ !cancelled() }}
         env:
           CONFIG: .github/yamllint.yaml
@@ -53,29 +51,30 @@ jobs:
         uses: cssnr/actionlint-action@v1
 
       # Lint: src/get-contributors.js
-      - name: "Check Contributors Changes"
+      - name: "Contributors - Changes"
         id: contributors-changed
         uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62 # v47
         with:
           files: |
-            src/get-contributors.js
+            src/**
             package*.json
 
-      - name: "Verify Contributors Build"
+      - name: "Contributors - Build"
         if: steps.contributors-changed.outputs.any_changed == 'true'
         run: |
           npm run build:contributors
 
       # Lint: docs/
-      - name: "Check Docs Changes"
+      - name: "Docs - Changes"
         id: docs-changed
         uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62 # v47
         with:
           files: |
             docs/**
             package*.json
+            vite.config.js
 
-      - name: "Verify Docs Build"
+      - name: "Docs - Build"
         if: steps.docs-changed.outputs.any_changed == 'true'
         run: |
           npm run docs:deploy
