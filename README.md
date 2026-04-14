@@ -4,16 +4,17 @@
 [![Bundlephobia Size](https://img.shields.io/bundlephobia/min/%40cssnr%2Fvitepress-plugin-contributors?logo=bookstack&logoColor=white)](https://bundlephobia.com/package/@cssnr/vitepress-plugin-contributors)
 [![Deployments NPM](https://img.shields.io/github/deployments/cssnr/vitepress-plugin-contributors/npm?logo=npm&label=deploy)](https://github.com/cssnr/vitepress-plugin-contributors/deployments/npm)
 [![Deployments Docs](https://img.shields.io/github/deployments/cssnr/vitepress-plugin-contributors/docs?logo=vitepress&logoColor=white&label=docs)](https://github.com/cssnr/vitepress-plugin-contributors/deployments/docs)
-[![Workflow Release](https://img.shields.io/github/actions/workflow/status/cssnr/vitepress-plugin-contributors/release.yaml?logo=cachet&label=release)](https://github.com/cssnr/vitepress-plugin-contributors/actions/workflows/release.yaml)
-[![Workflow Lint](https://img.shields.io/github/actions/workflow/status/cssnr/vitepress-plugin-contributors/lint.yaml?logo=cachet&label=lint)](https://github.com/cssnr/vitepress-plugin-contributors/actions/workflows/lint.yaml)
-[![GitHub Repo Size](https://img.shields.io/github/repo-size/cssnr/vitepress-plugin-contributors?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/cssnr/vitepress-plugin-contributors?tab=readme-ov-file#readme)
-[![GitHub Top Language](https://img.shields.io/github/languages/top/cssnr/vitepress-plugin-contributors?logo=htmx&logoColor=white)](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src)
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/vitepress-plugin-contributors?logo=github&label=updated)](https://github.com/cssnr/vitepress-plugin-contributors/pulse)
-[![GitHub Issues](https://img.shields.io/github/issues/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/issues)
-[![GitHub Contributors](https://img.shields.io/github/contributors-anon/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/graphs/contributors)
-[![GitHub Discussions](https://img.shields.io/github/discussions/cssnr/vitepress-plugin-contributors?logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/discussions)
-[![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/vitepress-plugin-contributors?style=flat&logo=github)](https://github.com/cssnr/vitepress-plugin-contributors/stargazers)
-[![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&label=org%20stars)](https://cssnr.github.io/)
+[![Workflow Release](https://img.shields.io/github/actions/workflow/status/cssnr/vitepress-plugin-contributors/release.yaml?logo=norton&logoColor=white&label=release)](https://github.com/cssnr/vitepress-plugin-contributors/actions/workflows/release.yaml)
+[![Workflow Lint](https://img.shields.io/github/actions/workflow/status/cssnr/vitepress-plugin-contributors/lint.yaml?logo=norton&logoColor=white&label=lint)](https://github.com/cssnr/vitepress-plugin-contributors/actions/workflows/lint.yaml)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/cssnr/vitepress-plugin-contributors?logo=listenhub&label=updated)](https://github.com/cssnr/vitepress-plugin-contributors/pulse)
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/cssnr/vitepress-plugin-contributors?logo=buffer&label=repo%20size)](https://github.com/cssnr/vitepress-plugin-contributors?tab=readme-ov-file#readme)
+[![GitHub Top Language](https://img.shields.io/github/languages/top/cssnr/vitepress-plugin-contributors?logo=devbox)](https://github.com/cssnr/vitepress-plugin-contributors?tab=readme-ov-file#readme)
+[![GitHub Contributors](https://img.shields.io/github/contributors-anon/cssnr/vitepress-plugin-contributors?logo=southwestairlines)](https://github.com/cssnr/vitepress-plugin-contributors/graphs/contributors)
+[![GitHub Issues](https://img.shields.io/github/issues/cssnr/vitepress-plugin-contributors?logo=codeforces&logoColor=white)](https://github.com/cssnr/vitepress-plugin-contributors/issues)
+[![GitHub Discussions](https://img.shields.io/github/discussions/cssnr/vitepress-plugin-contributors?logo=theconversation)](https://github.com/cssnr/vitepress-plugin-contributors/discussions)
+[![GitHub Forks](https://img.shields.io/github/forks/cssnr/vitepress-plugin-contributors?style=flat&logo=forgejo&logoColor=white)](https://github.com/cssnr/vitepress-plugin-contributors/forks)
+[![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/vitepress-plugin-contributors?style=flat&logo=gleam&logoColor=white)](https://github.com/cssnr/vitepress-plugin-contributors/stargazers)
+[![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=apachespark&logoColor=white&label=org%20stars)](https://cssnr.github.io/)
 [![Discord](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-72a5f2?logo=kofi&label=support)](https://ko-fi.com/cssnr)
 
@@ -30,6 +31,7 @@
 - [Contributing](#Contributing)
 
 A [VitePress](https://vitepress.dev/) Plugin to Easily generate, update and display repository Contributors.
+Supports GitHub (including Enterprise) and Forgejo (Gitea, Codeberg, etc.).
 
 This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors) includes two components that can be use together or individually.
 
@@ -90,6 +92,8 @@ Only the `user/repo` is required. All other arguments are optional.
 | `-b`/`--bots`      | -                              | Include bot users in the results           |
 | `-e`/`--error`     | -                              | Throw errors during generation             |
 | `-k`/`--keys`      | `login,avatar_url`             | Contributor keys to save to file           |
+| `-G`/`--github`    | `https://api.github.com`       | GitHub API URL (for Enterprise)            |
+| `-F`/`--forgejo`   | -                              | Forgejo API URL (for Gitea/Codeberg)       |
 
 Note: This script makes 1 request to the GitHub API for every 100 contributors on the repository (or `max-users`).
 Because of this if you have a lot of contributors (200+) running this back-to-back may hit
@@ -231,19 +235,20 @@ If you have a live demo, [let us know](#support) and we will post it here...
 
 ## Support
 
-Please let us know if you run into any [issues](https://github.com/cssnr/vitepress-plugin-contributors/issues)
-or want to see [a new feature](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests).
+Logs can be found inspecting the page (Ctrl+Shift+I), clicking on the Console, and;
+Firefox: toggling Debug logs, Chrome: toggling Verbose from levels dropdown.
 
-For general help or to request a feature:
+If you run into any issues or need help getting started, please do one of the following:
 
-- Q&A Discussion: [discussions/q-a](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/q-a)
-- Request a Feature: [discussions/feature-requests](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests)
+- Report an Issue: <https://github.com/cssnr/vitepress-plugin-contributors/issues>
+- Q&A Discussion: <https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/q-a>
+- Request a Feature: <https://github.com/cssnr/vitepress-plugin-contributors/issues/new?template=1-feature.yaml>
+- Chat with us on Discord: <https://discord.gg/wXy6m2X8wY>
 
-If you are experiencing an issue/bug or getting unexpected results:
-
-- Report an Issue: [cssnr/vitepress-plugin-contributors/issues](https://github.com/cssnr/vitepress-plugin-contributors/issues)
-- Chat with us on Discord: https://discord.gg/wXy6m2X8wY
-- Provide General Feedback: [https://cssnr.github.io/feedback/](https://cssnr.github.io/feedback/?app=VitePress%20Plugin%20Contributors)
+[![Features](https://img.shields.io/badge/features-brightgreen?style=for-the-badge&logo=rocket&logoColor=white)](https://github.com/cssnr/vitepress-plugin-contributors/issues/new?template=1-feature.yaml)
+[![Issues](https://img.shields.io/badge/issues-red?style=for-the-badge&logo=southwestairlines&logoColor=white)](https://github.com/cssnr/vitepress-plugin-contributors/issues)
+[![Discussions](https://img.shields.io/badge/discussions-blue?style=for-the-badge&logo=livechat&logoColor=white)](https://github.com/cssnr/vitepress-plugin-contributors/discussions)
+[![Discord](https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/wXy6m2X8wY)
 
 ### More VitePress Plugins
 
@@ -253,7 +258,7 @@ If you are experiencing an issue/bug or getting unexpected results:
 
 # Contributing
 
-All contributions are welcome including [bug reports](https://github.com/cssnr/vitepress-plugin-contributors/issues), [feature requests](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests), or pull requests.
+All contributions are welcome including [bug reports](https://github.com/cssnr/vitepress-plugin-contributors/issues), [feature requests](https://github.com/cssnr/vitepress-plugin-contributors/issues/new?template=1-feature.yaml), or pull requests.
 
 For instructions on creating a PR for the [Package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors) or [Documentation](https://vitepress-contributors.cssnr.com/),
 see the [CONTRIBUTING.md](#contributing-ov-file).
@@ -263,3 +268,11 @@ Please consider making a donation to support the development of this project and
 [![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/cssnr)
 
 For a full list of current projects visit: [https://cssnr.github.io/](https://cssnr.github.io/)
+
+<a href="https://github.com/cssnr/vitepress-plugin-contributors/stargazers">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=cssnr/vitepress-plugin-contributors&type=date&legend=bottom-right&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=cssnr/vitepress-plugin-contributors&type=date&legend=bottom-right" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=cssnr/vitepress-plugin-contributors&type=date&legend=bottom-right" />
+ </picture>
+</a>
