@@ -43,7 +43,7 @@ If you have a live demo, let us know and we will post it here...
 &nbsp;
 
 ::: tip Request a Feature
-If you need more options, please [open a feature request](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests)
+If you need more options, please [open a feature request](https://github.com/cssnr/vitepress-plugin-contributors/issues/new?template=1-feature.yaml)
 :::
 
 <style>

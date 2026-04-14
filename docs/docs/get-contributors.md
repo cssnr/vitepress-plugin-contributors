@@ -11,6 +11,8 @@ Only the `user/repo` is required. All other arguments are optional.
 | `-b`/`--bots`      | -                              | Include bot users in the results           |
 | `-e`/`--error`     | -                              | Throw errors during generation             |
 | `-k`/`--keys`      | `login,avatar_url`             | Contributor keys to save to file           |
+| `-G`/`--github`    | `https://api.github.com`       | GitHub API URL (for Enterprise)            |
+| `-F`/`--forgejo`   | -                              | Forgejo API URL (for Gitea/Codeberg)       |
 
 Show help: `npx get-contributors -h` <CB prev />
 
@@ -26,6 +28,22 @@ Limit to top 20 contributors, specify output file, and include bot users.
 
 ```shell
 npx get-contributors user/repo -m 20 -f .vitepress/contributors.json -b
+```
+
+### GitHub Enterprise
+
+You can set the GitHub API url to use with `-G`.
+
+```shell
+npx get-contributors user/repo -G api.example.com
+```
+
+### Forgejo/Gitea/Codeberg
+
+To use with the Forgejo API, set the url with `-F`.
+
+```shell
+npx get-contributors user/repo -F codeberg.org
 ```
 
 ::: details GitHub API Rate Limit
@@ -46,5 +64,5 @@ For information on building, see the [Get Contributors Source](../guides/source#
 &nbsp;
 
 ::: tip Request a Feature
-If you need more options, please [open a feature request](https://github.com/cssnr/vitepress-plugin-contributors/discussions/categories/feature-requests)
+If you need more options, please [open a feature request](https://github.com/cssnr/vitepress-plugin-contributors/issues/new?template=1-feature.yaml)
 :::
