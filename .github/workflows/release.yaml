@@ -20,18 +20,22 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
-      - name: "Debug Event"
+      - name: "Debug event.json"
+        if: ${{ !github.event.act }}
         continue-on-error: true
-        run: |
-          echo "ref: ${{ github.ref }}"
-          echo "event_name: ${{ github.event_name }}"
-          echo "github.event.repository.name: ${{ github.event.repository.name }}"
-
-          echo "::group::cat event.json"
-          cat "${GITHUB_EVENT_PATH}"
-          echo "::endgroup::"
+        run: cat "${GITHUB_EVENT_PATH}"
+      - name: "Debug CTX github"
+        if: ${{ !github.event.act }}
+        continue-on-error: true
+        env:
+          GITHUB_CTX: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CTX"
+      - name: "Debug Environment"
+        if: ${{ !github.event.act }}
+        continue-on-error: true
+        run: env
 
       - name: "Update Package Version"
         uses: cssnr/update-json-value-action@v1
@@ -40,8 +44,7 @@ jobs:
 
       - name: "Debug Package File"
         continue-on-error: true
-        run: |
-          cat package.json
+        run: cat package.json
 
       - name: "Setup Node"
         uses: actions/setup-node@v6
@@ -50,8 +53,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: "Install"
-        run: |
-          npm ci
+        run: npm ci
 
       - name: "Publish"
         if: ${{ !github.event.release.prerelease }}
@@ -102,30 +104,13 @@ jobs:
             dist.zip
             get-contributors.js
 
-      - name: "Parse Release"
-        id: asset
-        if: ${{ github.event_name == 'release' }}
-        env:
-          assets: ${{ steps.release.outputs.assets }}
-        run: |
-          echo "url: ${{ fromJSON(steps.release.outputs.assets)[1].browser_download_url }}"
-          echo "url=${{ fromJSON(steps.release.outputs.assets)[1].browser_download_url }}" >> "$GITHUB_OUTPUT"
-          echo "digest: ${{ fromJSON(steps.release.outputs.assets)[1].digest }}"
-          sha256="$(echo "${{ fromJSON(steps.release.outputs.assets)[1].digest }}" | cut -d ":" -f 2)"
-          echo "sha256: ${sha256}"
-          if [ -z "${sha256}" ];then
-            echo "Missing sha256"
-            exit 1
-          fi
-          echo "sha256=${sha256}" >> "$GITHUB_OUTPUT"
-
       - name: "Homebrew Action"
         id: homebrew
         if: ${{ github.event_name == 'release' && !github.event.release.prerelease }}
         uses: cssnr/homebrew-action@master
         with:
-          url: ${{ steps.asset.outputs.url }}
-          sha256: ${{ steps.asset.outputs.sha256 }}
+          url: ${{ fromJSON(steps.release.outputs.assets)[1].browser_download_url }}
+          sha256: ${{ fromJSON(steps.release.outputs.assets)[1].digest }}
           repo: cssnr/homebrew-tap
           formula: get-contributors.rb
           message: Bump get-contributors.rb to ${{ github.ref_name }}
