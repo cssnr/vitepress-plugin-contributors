@@ -7,109 +7,161 @@ const { program } = require('commander')
     program
         .argument('<repository>', 'Full Repository (example: "user/repo")')
         .option('-f, --file <filepath>', 'Output File', '.vitepress/contributors.json')
-        .option('-m, --max-users <number>', 'Max Contributors, 0 is unlimited', '0')
+        .option('-m, --max-users <number>', 'Max Contributors, 0 is unlimited', (val) => Number(val), 0)
         .option('-k, --keys <list,of,keys>', 'Specify Keys to Save', 'login,avatar_url')
         .option('-b, --bots', 'Include Bot Users', false)
         .option('-e, --error', 'Throw Errors', false)
-        .option('--forgejo <url>', 'Use Forgejo/Gitea API')
+        .option('-G, --github <url>', 'Specify a Custom GitHub API', 'https://api.github.com')
+        .option('-F, --forgejo <url>', 'Specify Forgejo/Gitea API')
 
     program.parse()
 
     const repo = program.args[0]
+    console.log('repo:', repo)
     const options = program.opts()
-    const maxUsers = Number(options.maxUsers)
-    const keys = options.keys.split(',').map((k) => k.trim())
-
-    console.log(`get-contributors - ${repo}`, options)
+    console.log('options:', options)
+    const origin = parseOrigin(options.forgejo || options.github)
+    console.log('origin:', origin)
 
     fs.mkdirSync(path.dirname(options.file), { recursive: true })
 
     let data = []
     try {
-        data = await getContributors(repo, maxUsers, !options.bots, keys, options)
+        if (options.forgejo) {
+            data = await getForgejo(origin, repo, options)
+        } else {
+            data = await getGithub(origin, repo, options)
+        }
     } catch (e) {
         console.error(e)
         if (options.error) {
             throw e
         }
     }
+    console.log('data:', data)
     console.log(`get-contributors - total contributors: ${data.length}`)
     fs.writeFileSync(options.file, JSON.stringify(data), 'utf8')
 })()
 
-async function getContributors(repo, maxUsers, filterBots, keys, options) {
-    if (options.forgejo) {
-        const host = options.forgejo.replace(/\/$/, '')
-        const baseUrl = `${host}/api/v1`
-        const contributorsMap = new Map()
-        const perPage = 100
-        let page = 1
+/**
+ * Parse Origin URL
+ * @param {string} input
+ * @return {string}
+ */
+function parseOrigin(input) {
+    console.log('parseOrigin:', input)
+    if (!input.includes('://')) input = `https://${input}`
+    const url = new URL(input)
+    return url.origin
+}
 
-        while (true) {
-            const url = `${baseUrl}/repos/${repo}/commits?limit=${perPage}&page=${page}`
-            const response = await fetch(url, { headers: { Accept: 'application/json' } })
+/**
+ * Get GitHub Contributors
+ * @param {string} origin
+ * @param {string} repo
+ * @param {object} options
+ * @return {Promise<[object]>}
+ */
+async function getGithub(origin, repo, options) {
+    console.log('getGithub:', origin, repo, options)
+    const results = []
+    const perPage = 100
+    let page = 1
 
-            if (!response.ok) break
+    const keys = options.keys.split(',').map((k) => k.trim())
+    console.log('keys:', keys)
 
-            const commits = await response.json()
-            if (!commits || !commits.length) break
-
-            for (const item of commits) {
-                const user = item.author 
-
-                if (user && !contributorsMap.has(user.login)) {
-                    if (filterBots && (user.login.includes('[bot]') || user.type === 'Bot')) {
-                        continue
-                    }
-                    
-                    const mappedUser = keys.reduce((obj, key) => {
-                        obj[key] = user[key]
-                        return obj
-                    }, {})
-
-                    contributorsMap.set(user.login, mappedUser)
-                }
-
-                if (maxUsers > 0 && contributorsMap.size >= maxUsers) break
-            }
-
-            if (commits.length < perPage || (maxUsers > 0 && contributorsMap.size >= maxUsers)) break
-            page++
-            await new Promise((r) => setTimeout(r, 200))
+    while (true) {
+        const url = `${origin}/repos/${repo}/contributors?per_page=${perPage}&page=${page}`
+        // console.log(`fetch url: ${url}`)
+        const response = await fetch(url, { headers: { Accept: 'application/vnd.github+json' } })
+        // console.log('response.status:', response.status)
+        if (!response.ok) {
+            console.error(`response.status: ${response.status} - url: ${url}`)
+            break
         }
 
-        return Array.from(contributorsMap.values())
+        const contributors = await response.json()
+        // console.log('contributors.length:', contributors.length)
+        if (!contributors.length) break
+
+        const filtered = !options.bots ? contributors.filter((c) => c.type === 'User') : contributors
+        // console.log('filtered.length:', filtered.length)
+
+        // const mapped = filtered.map((c) => ({ login: c.login, avatar_url: c.avatar_url }))
+        const mapped = filtered.map((c) =>
+            keys.reduce((obj, key) => {
+                obj[key] = c[key]
+                return obj
+            }, {})
+        )
+        // console.log('mapped.length:', mapped.length)
+
+        results.push(...mapped)
+        // console.log('contributors.length:', contributors.length)
+        if (contributors.length < perPage) break
+        // console.log('results.length:', results.length)
+        if (options.maxUsers > 0 && results.length >= options.maxUsers) break
+        page++
+        await new Promise((resolve) => setTimeout(resolve, 250))
     }
-    else {
-        const results = []
-        const perPage = 100
-        let page = 1
 
-        while (true) {
-            const url = `https://api.github.com/repos/${repo}/contributors?per_page=${perPage}&page=${page}`
-            const response = await fetch(url, { headers: { Accept: 'application/vnd.github+json' } })
+    // console.log('results.length:', results.length)
+    return options.maxUsers > 0 ? results.slice(0, options.maxUsers) : results
+}
 
-            if (!response.ok) break
+/**
+ * Get Forgejo Contributors
+ * @param {string} origin
+ * @param {string} repo
+ * @param {object} options
+ * @return {Promise<[object]>}
+ */
+async function getForgejo(origin, repo, options) {
+    console.log('getForgejo:', origin, repo, options)
+    const contributorsMap = new Map()
+    const perPage = 100
+    let page = 1
 
-            const contributors = await response.json()
-            if (!contributors || !contributors.length) break
+    const keys = options.keys.split(',').map((k) => k.trim())
+    console.log('keys:', keys)
 
-            const filtered = filterBots ? contributors.filter((c) => c.type === 'User') : contributors
+    const baseUrl = `${origin}/api/v1`
+    console.log('baseUrl:', baseUrl)
 
-            const mapped = filtered.map((c) =>
-                keys.reduce((obj, key) => {
-                    obj[key] = c[key]
+    while (true) {
+        const url = `${baseUrl}/repos/${repo}/commits?limit=${perPage}&page=${page}`
+        console.log('url:', url)
+        const response = await fetch(url, { headers: { Accept: 'application/json' } })
+        console.log('response.status:', response.status)
+        if (!response.ok) break
+
+        const commits = await response.json()
+        console.log('commits.length:', commits.length)
+        if (!commits?.length) break
+
+        for (const item of commits) {
+            // console.log('item:', item)
+            const user = item.author
+            if (user && !contributorsMap.has(user.login)) {
+                // console.log('user:', user)
+                if (!options.bots && user.login.includes('[bot]')) continue
+                const mappedUser = keys.reduce((obj, key) => {
+                    obj[key] = user[key]
                     return obj
                 }, {})
-            )
+                contributorsMap.set(user.login, mappedUser)
+            }
 
-            results.push(...mapped)
-
-            if (contributors.length < perPage || (maxUsers > 0 && results.length >= maxUsers)) break
-            page++
-            await new Promise((r) => setTimeout(r, 250))
+            if (options.maxUsers > 0 && contributorsMap.size >= options.maxUsers) break
         }
 
-        return maxUsers > 0 ? results.slice(0, maxUsers) : results
+        if (commits.length < perPage || (options.maxUsers > 0 && contributorsMap.size >= options.maxUsers)) {
+            break
+        }
+        page++
+        await new Promise((r) => setTimeout(r, 200))
     }
+
+    return Array.from(contributorsMap.values())
 }
