@@ -17,11 +17,9 @@ const { program } = require('commander')
     program.parse()
 
     const repo = program.args[0]
-    console.log('repo:', repo)
     const options = program.opts()
-    console.log('options:', options)
     const origin = parseOrigin(options.forgejo || options.github)
-    console.log('origin:', origin)
+    console.log(`get-contributors - ${repo} - ${origin}`, options)
 
     fs.mkdirSync(path.dirname(options.file), { recursive: true })
 
@@ -38,7 +36,7 @@ const { program } = require('commander')
             throw e
         }
     }
-    console.log('data:', data)
+    // console.log('data:', data)
     console.log(`get-contributors - total contributors: ${data.length}`)
     fs.writeFileSync(options.file, JSON.stringify(data), 'utf8')
 })()
@@ -49,7 +47,7 @@ const { program } = require('commander')
  * @return {string}
  */
 function parseOrigin(input) {
-    console.log('parseOrigin:', input)
+    // console.log('parseOrigin:', input)
     if (!input.includes('://')) input = `https://${input}`
     const url = new URL(input)
     return url.origin
@@ -63,13 +61,13 @@ function parseOrigin(input) {
  * @return {Promise<[object]>}
  */
 async function getGithub(origin, repo, options) {
-    console.log('getGithub:', origin, repo, options)
+    // console.log('getGithub:', origin, repo, options)
     const results = []
     const perPage = 100
     let page = 1
 
     const keys = options.keys.split(',').map((k) => k.trim())
-    console.log('keys:', keys)
+    // console.log('keys:', keys)
 
     while (true) {
         const url = `${origin}/repos/${repo}/contributors?per_page=${perPage}&page=${page}`
@@ -118,26 +116,26 @@ async function getGithub(origin, repo, options) {
  * @return {Promise<[object]>}
  */
 async function getForgejo(origin, repo, options) {
-    console.log('getForgejo:', origin, repo, options)
+    // console.log('getForgejo:', origin, repo, options)
     const contributorsMap = new Map()
     const perPage = 100
     let page = 1
 
     const keys = options.keys.split(',').map((k) => k.trim())
-    console.log('keys:', keys)
+    // console.log('keys:', keys)
 
     const baseUrl = `${origin}/api/v1`
-    console.log('baseUrl:', baseUrl)
+    // console.log('baseUrl:', baseUrl)
 
     while (true) {
         const url = `${baseUrl}/repos/${repo}/commits?limit=${perPage}&page=${page}`
-        console.log('url:', url)
+        // console.log('url:', url)
         const response = await fetch(url, { headers: { Accept: 'application/json' } })
-        console.log('response.status:', response.status)
+        // console.log('response.status:', response.status)
         if (!response.ok) break
 
         const commits = await response.json()
-        console.log('commits.length:', commits.length)
+        // console.log('commits.length:', commits.length)
         if (!commits?.length) break
 
         for (const item of commits) {
