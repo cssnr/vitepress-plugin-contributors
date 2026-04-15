@@ -65,7 +65,7 @@ jobs:
       - name: "Build Contributors"
         continue-on-error: true
         run: |
-          npm run build:contributors
+          npm run contributors:build
 
       - name: "List Artifacts"
         continue-on-error: true
