@@ -65,7 +65,7 @@ jobs:
       - name: "Build Contributors"
         continue-on-error: true
         run: |
-          npm run build:contributors
+          npm run contributors:build
 
       - name: "List Artifacts"
         continue-on-error: true
@@ -102,8 +102,9 @@ jobs:
             dist/get-contributors/index.js
           names: |
             dist.zip
-            get-contributors.js
+            get-contributors.mjs
 
+      # NOTE: This assumes asset 1 from the release...
       - name: "Homebrew Action"
         id: homebrew
         if: ${{ github.event_name == 'release' && !github.event.release.prerelease }}

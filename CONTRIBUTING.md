@@ -1,14 +1,11 @@
 # Contributing
 
-- [Workflow](#Workflow)
 - [Package](#Package)
+  - [Contributors Component](#contributors-component)
+  - [Get Contributors Script](#get-contributors-script)
 - [Documentation](#Documentation)
 
-Contributions are welcome for both the [Package](#package) and the [Documentation](#documentation) site.
-
-You can follow the same [Workflow](#workflow) to make contributions to both.
-
-## Workflow
+General workflow:
 
 1. Fork the repository.
 2. Create a branch in your fork.
@@ -41,6 +38,32 @@ When you use `npm link` or install from file you need to re-build your changes t
 
 ```shell
 npm run build
+```
+
+### Contributors Component
+
+- [src/Contributors.vue](src/Contributors.vue)
+
+The docs run this from source so best to use that leverage vite.
+
+```shell
+nom run docs
+```
+
+### Get Contributors Script
+
+- [src/get-contributors.ts](src/get-contributors.ts)
+
+Since this is in TypeScript you need to run a watcher to pickup changes.
+
+```shell
+nom run contributors:watch
+```
+
+Then run it normally.
+
+```shell
+npx get-contributors
 ```
 
 ## Documentation

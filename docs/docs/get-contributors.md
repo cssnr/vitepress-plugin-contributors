@@ -1,6 +1,6 @@
 # Get Contributors
 
-View the source: [get-contributors.js](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src/get-contributors.js)
+View the source: [get-contributors.ts](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src/get-contributors.ts)
 
 Only the `user/repo` is required. All other arguments are optional.
 

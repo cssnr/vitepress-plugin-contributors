@@ -37,8 +37,8 @@ See the [Contributors Documentation](../docs/contributors.md) for `<Contributors
 
 This can be [installed with npm](get-started.md#install), or you can manually copy it to your project.
 
-- Source: [src/get-contributors](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src/get-contributors.js)
-- Latest Release: [get-contributors.js](https://github.com/cssnr/vitepress-plugin-contributors/releases/latest/download/get-contributors.js)
+- Source: [src/get-contributors](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src/get-contributors.ts)
+- Latest Release: [get-contributors.mjs](https://github.com/cssnr/vitepress-plugin-contributors/releases/latest/download/get-contributors.mjs)
 
 The **Latest Release** is a built, dependency free, version that can be run directly with [node](https://nodejs.org/).
 
@@ -68,7 +68,7 @@ See the [Get Contributors Documentation](../docs/get-contributors.md) for detail
 
 ### Building
 
-To build `get-contributors.js` without dependencies you can use [@vercel/ncc](https://www.npmjs.com/package/@vercel/ncc).
+To build `get-contributors.ts` without dependencies you can use [@vercel/ncc](https://www.npmjs.com/package/@vercel/ncc).
 
 ::: code-group
 
@@ -95,11 +95,11 @@ Then you can build it like this.
 ::: code-group
 
 ```shell [Normal ~vscode-icons:file-type-shell~]
-npx ncc build src/get-contributors.js -o dist/get-contributors
+npx ncc build src/get-contributors.ts -o dist/get-contributors
 ```
 
 ```shell [Minified ~vscode-icons:file-type-shell~]
-npx ncc build -m src/get-contributors.js -o dist/get-contributors
+npx ncc build -m src/get-contributors.ts -o dist/get-contributors
 ```
 
 :::

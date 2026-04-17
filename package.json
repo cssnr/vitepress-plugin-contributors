@@ -26,6 +26,7 @@
     "name": "Shane",
     "url": "https://cssnr.github.io/"
   },
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/Contributors.es.js",
@@ -36,35 +37,41 @@
   "main": "dist/Contributors.umd.js",
   "module": "dist/Contributors.es.js",
   "bin": {
-    "get-contributors": "./src/get-contributors.js"
+    "get-contributors": "dist/get-contributors.mjs"
   },
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "vite build",
-    "build:contributors": "npx ncc build -m src/get-contributors.js -o dist/get-contributors",
+    "contributors": "tsdown",
+    "contributors:build": "npx ncc build src/get-contributors.ts -o dist/get-contributors",
+    "contributors:watch": "tsdown --watch",
     "docs": "npm run docs:dev",
     "docs:build": "vitepress build docs",
     "docs:deploy": "npm run get-contributors && npm run docs:build",
     "docs:dev": "vitepress dev docs",
     "docs:preview": "vitepress preview docs",
     "get-contributors": "npx get-contributors vuejs/vitepress -m 98 -f docs/.vitepress/contributors.json",
-    "prepare": "npm run build",
+    "ncu": "ncu -u -x commander",
+    "prepare": "npm run build && npm run contributors",
     "prettier:check": "npx prettier --check .",
     "prettier:write": "npx prettier --write ."
   },
   "dependencies": {
-    "commander": "^14.0.3"
+    "commander": "^14.0.0"
   },
   "devDependencies": {
     "@cssnr/vitepress-plugin-copybutton": "^0.0.2",
+    "@types/node": "^25.6.0",
     "@vercel/ncc": "^0.38.4",
     "@vitejs/plugin-vue": "^6.0.6",
-    "prettier": "^3.8.2",
+    "prettier": "^3.8.3",
+    "tsdown": "^0.21.9",
+    "typescript": "^6.0.3",
     "vite": "^8.0.8",
     "vitepress": "^1.6.4",
-    "vitepress-plugin-group-icons": "^1.7.3",
+    "vitepress-plugin-group-icons": "^1.7.5",
     "vue": "^3.5.32"
   }
 }

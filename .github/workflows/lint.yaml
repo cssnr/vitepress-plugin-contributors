@@ -50,7 +50,7 @@ jobs:
         if: ${{ !cancelled() }}
         uses: cssnr/actionlint-action@v1
 
-      # Lint: src/get-contributors.js
+      # Lint: src/
       - name: "Contributors - Changes"
         id: contributors-changed
         uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62 # v47
@@ -62,7 +62,7 @@ jobs:
       - name: "Contributors - Build"
         if: steps.contributors-changed.outputs.any_changed == 'true'
         run: |
-          npm run build:contributors
+          npm run contributors:build
 
       # Lint: docs/
       - name: "Docs - Changes"

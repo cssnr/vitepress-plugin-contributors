@@ -1,19 +1,25 @@
 {
-  "trailingComma": "es5",
   "semi": false,
   "singleQuote": true,
   "printWidth": 110,
   "overrides": [
     {
-      "files": ["**/*.html", "**/*.yaml", "**/*.yml"],
+      "files": ["**/*.js", "**/*.mjs", "**/*.css", "**/*.scss"],
       "options": {
-        "singleQuote": false
+        "tabWidth": 4
       }
     },
     {
-      "files": ["**/*.js", "**/*.css", "**/*.scss"],
+      "files": ["**/*.html", "**/*.yaml", "**/*.yml"],
       "options": {
-        "tabWidth": 4
+        "singleQuote": false,
+        "printWidth": 120
+      }
+    },
+    {
+      "files": ["**/*.vue"],
+      "options": {
+        "printWidth": 120
       }
     }
   ]

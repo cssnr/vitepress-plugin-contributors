@@ -35,7 +35,7 @@ Supports GitHub (including Enterprise) and Forgejo (Gitea, Codeberg, etc.).
 
 This [package](https://www.npmjs.com/package/@cssnr/vitepress-plugin-contributors) includes two components that can be use together or individually.
 
-1. [get-contributors](src/get-contributors.js) - script to generate the `contributors.json` file.
+1. [get-contributors](src/get-contributors.ts) - script to generate the `contributors.json` file.
 2. [Contributors.vue](src/Contributors.vue) - component to display the contributors in VitePress.
 
 Also includes a detailed [Installation](#install) guide with available [Support](#support).
@@ -52,7 +52,7 @@ Also includes a detailed [Installation](#install) guide with available [Support]
 npm i @cssnr/vitepress-plugin-contributors
 ```
 
-2. Add the [get-contributors](src/get-contributors.js) script to your `package.json`.
+2. Add the [get-contributors](src/get-contributors.ts) script to your `package.json`.
 
 ```json
 {
