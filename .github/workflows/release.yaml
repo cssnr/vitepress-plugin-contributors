@@ -104,6 +104,7 @@ jobs:
             dist.zip
             get-contributors.mjs
 
+      # NOTE: This assumes asset 1 from the release...
       - name: "Homebrew Action"
         id: homebrew
         if: ${{ github.event_name == 'release' && !github.event.release.prerelease }}

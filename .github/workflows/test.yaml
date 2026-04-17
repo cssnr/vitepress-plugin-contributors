@@ -38,29 +38,25 @@ jobs:
           MIN_LENGTH: 2
         run: |
           npx get-contributors cssnr/vitepress-plugin-contributors
+
           echo "::group::cat .vitepress/contributors.json"
           cat .vitepress/contributors.json
-          echo "::endgroup::"
-
+          echo -e "\n::endgroup::"
           LENGTH=$(jq 'length' .vitepress/contributors.json)
           if [ "$LENGTH" -lt "$MIN_LENGTH" ]; then
-            echo "❌ $LENGTH is less than $MIN_LENGTH"
-            exit 1
+            echo "❌ $LENGTH is less than $MIN_LENGTH"; exit 1
           fi
-          echo "✅ Contributors Length: $LENGTH"
 
       - name: "Test Forgejo"
         env:
           MIN_LENGTH: 1
         run: |
           npx get-contributors -F codeberg.org shaner/contributors-test
+
           echo "::group::cat .vitepress/contributors.json"
           cat .vitepress/contributors.json
-          echo "::endgroup::"
-
+          echo -e "\n::endgroup::"
           LENGTH=$(jq 'length' .vitepress/contributors.json)
           if [ "$LENGTH" -lt "$MIN_LENGTH" ]; then
-            echo "❌ $LENGTH is less than $MIN_LENGTH"
-            exit 1
+            echo "❌ $LENGTH is less than $MIN_LENGTH"; exit 1
           fi
-          echo "✅ Contributors Length: $LENGTH"
