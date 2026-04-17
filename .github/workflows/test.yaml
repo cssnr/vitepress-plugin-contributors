@@ -51,9 +51,9 @@ jobs:
 
       - name: "Test Forgejo"
         env:
-          MIN_LENGTH: 3
+          MIN_LENGTH: 1
         run: |
-          npx get-contributors -F codeberg.org forgejo-contrib/forgejo-cli
+          npx get-contributors -F codeberg.org shaner/contributors-test
           echo "::group::cat .vitepress/contributors.json"
           cat .vitepress/contributors.json
           echo "::endgroup::"
