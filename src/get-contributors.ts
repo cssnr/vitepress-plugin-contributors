@@ -40,6 +40,7 @@ async function main() {
     }
   }
   // console.log('data:', data)
+
   console.log(`get-contributors - total contributors: ${data.length}`)
   fs.writeFileSync(options.file, JSON.stringify(data), 'utf8')
 }

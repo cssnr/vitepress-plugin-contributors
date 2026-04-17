@@ -102,7 +102,7 @@ jobs:
             dist/get-contributors/index.js
           names: |
             dist.zip
-            get-contributors.js
+            get-contributors.mjs
 
       - name: "Homebrew Action"
         id: homebrew

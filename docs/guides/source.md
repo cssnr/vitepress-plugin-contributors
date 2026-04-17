@@ -38,7 +38,7 @@ See the [Contributors Documentation](../docs/contributors.md) for `<Contributors
 This can be [installed with npm](get-started.md#install), or you can manually copy it to your project.
 
 - Source: [src/get-contributors](https://github.com/cssnr/vitepress-plugin-contributors/blob/master/src/get-contributors.ts)
-- Latest Release: [get-contributors.ts](https://github.com/cssnr/vitepress-plugin-contributors/releases/latest/download/get-contributors.ts)
+- Latest Release: [get-contributors.mjs](https://github.com/cssnr/vitepress-plugin-contributors/releases/latest/download/get-contributors.mjs)
 
 The **Latest Release** is a built, dependency free, version that can be run directly with [node](https://nodejs.org/).
 
