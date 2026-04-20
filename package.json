@@ -45,7 +45,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
     "contributors": "tsdown",
     "contributors:build": "npx ncc build src/get-contributors.ts -o dist/get-contributors",
     "contributors:watch": "tsdown --watch",
