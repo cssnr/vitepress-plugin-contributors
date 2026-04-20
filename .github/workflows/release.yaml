@@ -38,7 +38,7 @@ jobs:
         run: env
 
       - name: "Update Package Version"
-        uses: cssnr/update-json-value-action@v1
+        uses: cssnr/update-json-value-action@v2
         with:
           file: "package.json"
 
@@ -57,10 +57,7 @@ jobs:
 
       - name: "Publish"
         if: ${{ !github.event.release.prerelease }}
-        #env:
-        #  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          npm publish --provenance --access public
+        run: npm publish --provenance --access public
 
       - name: "Build Contributors"
         continue-on-error: true
@@ -79,7 +76,7 @@ jobs:
           echo -e "${md}" >> "$GITHUB_STEP_SUMMARY"
 
       - name: "Upload to Actions"
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         continue-on-error: true
         with:
           name: dist

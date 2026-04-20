@@ -1,1 +1,2 @@
 docs/** linguist-documentation
+src/get-contributors.ts linguist-language=TypeScript
