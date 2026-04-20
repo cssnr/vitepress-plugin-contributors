@@ -4,8 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches: [master]
+    paths-ignore: &paths
+      - "docs/**"
   pull_request:
     branches: [master]
+    paths-ignore: *paths
 
 jobs:
   lint:
@@ -50,31 +53,10 @@ jobs:
         if: ${{ !cancelled() }}
         uses: cssnr/actionlint-action@v1
 
-      # Lint: src/
-      - name: "Contributors - Changes"
-        id: contributors-changed
-        uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62 # v47
-        with:
-          files: |
-            src/**
-            package*.json
-
-      - name: "Contributors - Build"
-        if: steps.contributors-changed.outputs.any_changed == 'true'
+      - name: "Build - Contributors"
         run: |
           npm run contributors:build
 
-      # Lint: docs/
-      - name: "Docs - Changes"
-        id: docs-changed
-        uses: tj-actions/changed-files@24d32ffd492484c1d75e0c0b894501ddb9d30d62 # v47
-        with:
-          files: |
-            docs/**
-            package*.json
-            vite.config.js
-
-      - name: "Docs - Build"
-        if: steps.docs-changed.outputs.any_changed == 'true'
+      - name: "Debug - Contributors"
         run: |
-          npm run docs:deploy
+          ls -lahR dist
