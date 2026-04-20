@@ -7,8 +7,6 @@
     "skipLibCheck": true,
     "rootDir": "src",
     "outDir": "dist",
-    "declaration": true,
-    "emitDeclarationOnly": true,
     "lib": ["ESNext", "DOM"],
     "types": ["node"]
   },
