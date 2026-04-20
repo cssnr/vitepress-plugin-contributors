@@ -30,6 +30,13 @@ jobs:
         id: install
         run: npm ci
 
+      - name: "Build - Contributors"
+        run: npm run contributors:build
+
+      - name: "Debug dist"
+        continue-on-error: true
+        run: ls -lahR dist
+
       #- name: "eslint"
       #  if: ${{ !cancelled() }}
       #  run: |
@@ -52,11 +59,3 @@ jobs:
       - name: "actionlint"
         if: ${{ !cancelled() }}
         uses: cssnr/actionlint-action@v1
-
-      - name: "Build - Contributors"
-        run: |
-          npm run contributors:build
-
-      - name: "Debug - Contributors"
-        run: |
-          ls -lahR dist
