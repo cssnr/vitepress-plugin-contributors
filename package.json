@@ -30,12 +30,14 @@
   "exports": {
     ".": {
       "import": "./dist/Contributors.es.js",
-      "require": "./dist/Contributors.umd.js"
+      "require": "./dist/Contributors.umd.js",
+      "types": "./dist/Contributors.vue.d.ts"
     },
     "./style.css": "./dist/Contributors.css"
   },
   "main": "dist/Contributors.umd.js",
   "module": "dist/Contributors.es.js",
+  "types": "dist/Contributors.vue.d.ts",
   "bin": {
     "get-contributors": "dist/get-contributors.mjs"
   },
@@ -72,6 +74,7 @@
     "vite": "^8.0.8",
     "vitepress": "^1.6.4",
     "vitepress-plugin-group-icons": "^1.7.5",
-    "vue": "^3.5.32"
+    "vue": "^3.5.32",
+    "vue-tsc": "^3.2.7"
   }
 }
