@@ -3,11 +3,11 @@ name: "Lint"
 on:
   workflow_dispatch:
   push:
-    branches: [master, legacy]
+    branches: [master, main]
     paths-ignore: &paths
       - "docs/**"
   pull_request:
-    branches: [master, legacy]
+    branches: [master, main]
     paths-ignore: *paths
 
 concurrency:

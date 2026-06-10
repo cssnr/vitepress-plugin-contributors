@@ -3,7 +3,7 @@ name: "Preview"
 on:
   workflow_dispatch:
   push:
-    branches-ignore: [master, legacy]
+    branches-ignore: [master, main]
     paths:
       - ".github/workflows/preview.yaml"
       - ".vitepress/**"
