@@ -34,9 +34,9 @@ jobs:
         id: install
         run: |
           npm ci
-          npm run contributors:build
 
       - name: "Debug"
+        continue-on-error: true
         run: ls -lahR dist
 
       - name: "eslint"

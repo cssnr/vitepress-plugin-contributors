@@ -38,10 +38,8 @@ jobs:
           instructions: |
             You are a helpful assistant responding to a GitHub Issue created by user @${{ github.actor }}
             in the repository ${{ github.server_url }}/${{ github.repository }}
-            The files at `docs/**` are VitePress documentation with base URL https://cssnr.github.io/vitepress-chat/
-            Example: `docs/options.md` --> https://cssnr.github.io/vitepress-chat/options
             Provide initial triage and troubleshooting steps, then gather any additional information needed to proceed.
-            Respond using your general knowledge of VitePress, NPM Packages and the following knowledge files:
+            Respond using your general knowledge of VitePress Plugins, NPM Packages and the following knowledge files:
           url: https://vitepress-contributors.cssnr.com/llms.txt
           path: |
             package.json
