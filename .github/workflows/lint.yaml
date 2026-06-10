@@ -10,6 +10,10 @@ on:
     branches: [master, legacy]
     paths-ignore: *paths
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     name: "Lint"
@@ -21,25 +25,23 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v6
 
-      - name: "Setup Node 24"
+      - name: "Setup Node"
         uses: actions/setup-node@v6
         with:
           node-version: 24
 
       - name: "Install"
         id: install
-        run: npm ci
+        run: |
+          npm ci
+          npm run contributors:build
 
-      - name: "Build - Contributors"
-        run: npm run contributors:build
-
-      - name: "Debug - Contributors"
+      - name: "Debug"
         run: ls -lahR dist
 
-      #- name: "eslint"
-      #  if: ${{ !cancelled() }}
-      #  run: |
-      #    npm run lint
+      - name: "eslint"
+        if: ${{ !cancelled() }}
+        run: npm run lint
 
       - name: "prettier"
         if: ${{ !cancelled() }}
