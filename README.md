@@ -124,7 +124,7 @@ Alternatively, if you did not add the `get-contributors` script from step #2.
 npx get-contributors user/repo
 ```
 
-5. Import the components in your `.vitepress/theme/index.js`.
+5. Import the components in your `.vitepress/theme/index.ts`.
 
 ```javascript
 import DefaultTheme, { VPBadge } from 'vitepress/theme' // only if using VPBadge

@@ -3,11 +3,11 @@ name: "Lint"
 on:
   workflow_dispatch:
   push:
-    branches: [master]
+    branches: [master, legacy]
     paths-ignore: &paths
       - "docs/**"
   pull_request:
-    branches: [master]
+    branches: [master, legacy]
     paths-ignore: *paths
 
 jobs:
@@ -29,6 +29,12 @@ jobs:
       - name: "Install"
         id: install
         run: npm ci
+
+      - name: "Build - Contributors"
+        run: npm run contributors:build
+
+      - name: "Debug - Contributors"
+        run: ls -lahR dist
 
       #- name: "eslint"
       #  if: ${{ !cancelled() }}
@@ -52,11 +58,3 @@ jobs:
       - name: "actionlint"
         if: ${{ !cancelled() }}
         uses: cssnr/actionlint-action@v1
-
-      - name: "Build - Contributors"
-        run: |
-          npm run contributors:build
-
-      - name: "Debug - Contributors"
-        run: |
-          ls -lahR dist

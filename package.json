@@ -9,7 +9,7 @@
     "contributors",
     "github"
   ],
-  "homepage": "https://github.com/cssnr/vitepress-plugin-contributors",
+  "homepage": "https://vitepress-contributors.cssnr.com/",
   "bugs": {
     "url": "https://github.com/cssnr/vitepress-plugin-contributors/issues"
   },
@@ -21,7 +21,7 @@
     "type": "ko-fi",
     "url": "https://ko-fi.com/cssnr"
   },
-  "license": "GPL-3.0-only",
+  "license": "MIT",
   "author": {
     "name": "Shane",
     "url": "https://cssnr.github.io/"
@@ -47,7 +47,7 @@
   "scripts": {
     "build": "vite build && vue-tsc --declaration --emitDeclarationOnly",
     "contributors": "tsdown",
-    "contributors:build": "npx ncc build src/get-contributors.ts -o dist/get-contributors",
+    "contributors:build": "npx ncc build -m src/get-contributors.ts -o dist/get-contributors",
     "contributors:watch": "tsdown --watch",
     "docs": "npm run docs:dev",
     "docs:build": "vitepress build docs",
@@ -55,8 +55,9 @@
     "docs:dev": "vitepress dev docs",
     "docs:preview": "vitepress preview docs",
     "get-contributors": "npx get-contributors vuejs/vitepress -m 98 -f docs/.vitepress/contributors.json",
-    "ncu": "ncu -u -x commander",
+    "lint": "npx eslint src",
     "prepare": "npm run build && npm run contributors",
+    "prettier": "npm run prettier:write",
     "prettier:check": "npx prettier --check .",
     "prettier:write": "npx prettier --write ."
   },
@@ -64,17 +65,22 @@
     "commander": "^14.0.0"
   },
   "devDependencies": {
-    "@cssnr/vitepress-plugin-copybutton": "^0.0.2",
-    "@types/node": "^25.6.0",
-    "@vercel/ncc": "^0.38.4",
-    "@vitejs/plugin-vue": "^6.0.6",
-    "prettier": "^3.8.3",
-    "tsdown": "^0.21.9",
+    "@cssnr/vitepress-plugin-copybutton": "^0.0.3",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.9.2",
+    "@vercel/ncc": "^0.44.0",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "eslint": "^10.4.1",
+    "eslint-plugin-vue": "^10.9.2",
+    "prettier": "^3.8.4",
+    "tsdown": "^0.22.2",
     "typescript": "^6.0.3",
-    "vite": "^8.0.8",
+    "typescript-eslint": "^8.61.0",
+    "vite": "^8.0.16",
     "vitepress": "^1.6.4",
+    "vitepress-chat": "^0.0.2",
     "vitepress-plugin-group-icons": "^1.7.5",
-    "vue": "^3.5.32",
-    "vue-tsc": "^3.2.7"
+    "vue": "^3.5.35",
+    "vue-tsc": "^3.3.4"
   }
 }

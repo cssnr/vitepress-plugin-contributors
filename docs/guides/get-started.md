@@ -99,9 +99,9 @@ See the [Get Contributors Documentation](../docs/get-contributors.md) for usage 
 
 Add these 3-5 lines to your `index.[js,ts]`.
 
-_If you don't have a [.vitepress/theme/index.js](https://vitepress.dev/guide/custom-theme#theme-resolving) file, create one._
+_If you don't have a [.vitepress/theme/index.ts](https://vitepress.dev/guide/custom-theme#theme-resolving) file, create one._
 
-```javascript [.vitepress/theme/index.js]
+```javascript [.vitepress/theme/index.ts]
 import DefaultTheme, { VPBadge } from 'vitepress/theme' // [!code highlight]
 
 import Contributors from '@cssnr/vitepress-plugin-contributors' // [!code ++]

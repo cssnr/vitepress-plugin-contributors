@@ -3,11 +3,12 @@ name: "Preview"
 on:
   workflow_dispatch:
   push:
-    branches-ignore: [master]
+    branches-ignore: [master, legacy]
     paths:
       - ".github/workflows/preview.yaml"
       - ".vitepress/**"
       - "docs/**"
+      - "src/**"
       - "package*.json"
 
 concurrency:
@@ -22,10 +23,10 @@ jobs:
     permissions:
       contents: read
     with:
+      install: "npm ci --ignore-scripts"
       build: "npm run docs:deploy"
       path: "docs/.vitepress/dist"
-    secrets:
-      webhook: ${{ secrets.DISCORD_WEBHOOK }}
+    secrets: inherit
 
   deploy:
     name: "Deploy"
@@ -53,14 +54,14 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v6
 
-      - name: "Setup Node 24"
+      - name: "Setup Node"
         uses: actions/setup-node@v6
         with:
           node-version: 24
 
       - name: "Install"
         id: install
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: "prettier"
         if: ${{ !cancelled() }}

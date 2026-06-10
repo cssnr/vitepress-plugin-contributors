@@ -1,4 +1,6 @@
 <script setup>
+defineOptions({ name: 'VPContributors' })
+
 const props = defineProps({
   contributors: { type: Array, required: true },
   size: { type: String, default: '64' },
