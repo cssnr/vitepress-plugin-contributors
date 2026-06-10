@@ -1,6 +1,7 @@
 import path from 'path'
 import { defineConfig } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import instructions from 'vitepress-chat/instructions'
 
 const settings = {
   siteTitle: 'VitePress Contributors', // For Site Sidebar
@@ -24,6 +25,7 @@ export default defineConfig({
   // srcDir: './docs',
   // base: '/path/',
   vite: {
+    envDir: '..',
     resolve: {
       alias: {
         '@src': path.resolve(__dirname, '../../src'),
@@ -33,6 +35,10 @@ export default defineConfig({
       allowedHosts: true,
     },
     plugins: [
+      instructions({
+        filePath: 'llms.txt',
+        exclude: ['index.md', 'resources.md'],
+      }),
       groupIconVitePlugin({
         customIcon: {
           git: 'vscode-icons:file-type-git',
@@ -52,7 +58,15 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     ['link', { rel: 'icon', type: 'image/svg', sizes: 'any', href: settings.svg }],
-    ['link', { rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180', href: settings.image }],
+    [
+      'link',
+      {
+        rel: 'apple-touch-icon',
+        type: 'image/png',
+        sizes: '180x180',
+        href: settings.image,
+      },
+    ],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: settings.image32 }],
 
     ['meta', { name: 'darkreader-lock' }],

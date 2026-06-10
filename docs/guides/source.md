@@ -18,7 +18,7 @@ file to your project.
 
 Add these 2 lines to your `index.[js,ts]`.
 
-```javascript [.vitepress/theme/index.js]
+```javascript [.vitepress/theme/index.ts]
 import DefaultTheme from 'vitepress/theme'
 
 import Contributors from './components/Contributors.vue' // [!code ++]
@@ -104,4 +104,4 @@ npx ncc build -m src/get-contributors.ts -o dist/get-contributors
 
 :::
 
-The resulting `dist/get-contributors/index.js` can then be run without any dependencies.
+The resulting `dist/get-contributors/index.ts` can then be run without any dependencies.

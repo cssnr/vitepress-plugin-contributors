@@ -3,11 +3,12 @@ name: "Pages"
 on:
   workflow_dispatch:
   push:
-    branches: [master]
+    branches: [master, main]
     paths:
       - ".github/workflows/pages.yaml"
       - ".vitepress/**"
       - "docs/**"
+      - "src/**"
       - "package*.json"
 
 env:
@@ -21,14 +22,16 @@ concurrency:
 jobs:
   build:
     name: "Build"
-    if: ${{ !contains(github.event.head_commit.message, '#nodeploy') || github.actor != 'dependabot[bot]' }}
+    if: ${{ !contains(github.event.head_commit.message, '#nodeploy') }}
     uses: cssnr/workflows/.github/workflows/npm-build.yaml@master
     permissions:
       contents: read
     with:
+      install: "npm ci --ignore-scripts"
       build: "npm run docs:deploy"
       path: "docs/.vitepress/dist"
       pages: true
+    secrets: inherit
 
   deploy:
     name: "Deploy"
@@ -47,7 +50,7 @@ jobs:
     steps:
       - name: "Deploy Pages"
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
       - name: "Send Deploy Notification"
         if: ${{ !cancelled() }}

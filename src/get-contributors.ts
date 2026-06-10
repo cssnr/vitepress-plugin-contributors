@@ -9,7 +9,12 @@ async function main() {
   program
     .argument('<repository>', 'Full Repository (example: "user/repo")')
     .option('-f, --file <filepath>', 'Output File', '.vitepress/contributors.json')
-    .option('-m, --max-users <number>', 'Max Contributors, 0 is unlimited', (val) => Number(val), 0)
+    .option(
+      '-m, --max-users <number>',
+      'Max Contributors, 0 is unlimited',
+      (val) => Number(val),
+      0,
+    )
     .option('-k, --keys <list,of,keys>', 'Specify Keys to Save', 'login,avatar_url')
     .option('-b, --bots', 'Include Bot Users', false)
     .option('-e, --error', 'Throw Errors', false)
@@ -63,7 +68,9 @@ async function getGithub(origin: string, repo: string, options: Dict): Promise<D
   while (true) {
     const url = `${origin}/repos/${repo}/contributors?per_page=${perPage}&page=${page}`
     // console.log(`fetch url: ${url}`)
-    const response = await fetch(url, { headers: { Accept: 'application/vnd.github+json' } })
+    const response = await fetch(url, {
+      headers: { Accept: 'application/vnd.github+json' },
+    })
     // console.log('response.status:', response.status)
     if (!response.ok) {
       console.error(`response.status: ${response.status} - url: ${url}`)
@@ -74,7 +81,9 @@ async function getGithub(origin: string, repo: string, options: Dict): Promise<D
     // console.log('contributors.length:', contributors.length)
     if (!contributors.length) break
 
-    const filtered = !options.bots ? contributors.filter((c) => c.type === 'User') : contributors
+    const filtered = !options.bots
+      ? contributors.filter((c) => c.type === 'User')
+      : contributors
     // console.log('filtered.length:', filtered.length)
 
     // const mapped = filtered.map((c) => ({ login: c.login, avatar_url: c.avatar_url }))
@@ -138,7 +147,10 @@ async function getForgejo(origin: string, repo: string, options: Dict): Promise<
       if (options.maxUsers > 0 && contributorsMap.size >= options.maxUsers) break
     }
 
-    if (commits.length < perPage || (options.maxUsers > 0 && contributorsMap.size >= options.maxUsers)) {
+    if (
+      commits.length < perPage ||
+      (options.maxUsers > 0 && contributorsMap.size >= options.maxUsers)
+    ) {
       break
     }
     page++

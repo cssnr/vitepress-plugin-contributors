@@ -13,6 +13,7 @@ jobs:
     permissions:
       contents: write
       id-token: write
+      packages: write
 
     environment:
       name: npm
@@ -23,26 +24,23 @@ jobs:
         uses: actions/checkout@v6
 
       - name: "Debug event.json"
-        if: ${{ !github.event.act }}
         continue-on-error: true
         run: cat "${GITHUB_EVENT_PATH}"
       - name: "Debug CTX github"
-        if: ${{ !github.event.act }}
         continue-on-error: true
         env:
           GITHUB_CTX: ${{ toJSON(github) }}
         run: echo "$GITHUB_CTX"
       - name: "Debug Environment"
-        if: ${{ !github.event.act }}
         continue-on-error: true
         run: env
 
       - name: "Update Package Version"
-        uses: cssnr/update-json-value-action@v1
+        uses: cssnr/update-json-value-action@v2
         with:
           file: "package.json"
 
-      - name: "Debug Package File"
+      - name: "Debug package.json"
         continue-on-error: true
         run: cat package.json
 
@@ -52,59 +50,39 @@ jobs:
           node-version: 24
           registry-url: "https://registry.npmjs.org"
 
-      - name: "Install"
-        run: npm ci
-
-      - name: "Publish"
-        if: ${{ !github.event.release.prerelease }}
-        #env:
-        #  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: "Install and Pack"
         run: |
-          npm publish --provenance --access public
-
-      - name: "Build Contributors"
-        continue-on-error: true
-        run: |
+          npm ci
+          npm pack --ignore-scripts
           npm run contributors:build
 
-      - name: "List Artifacts"
-        continue-on-error: true
-        working-directory: dist
+      - name: "Update Contributors"
+        working-directory: dist/get-contributors
         run: |
-          results="$(tree .)"
-          echo "::group::results"
-          echo "${results}"
+          mv index.js get-contributors.mjs
+          chmod +x get-contributors.mjs
+          stat get-contributors.mjs
+
+      - name: "Debug Package"
+        run: |
+          echo "::group::ls ."
+          ls -lAh .
           echo "::endgroup::"
-          md="Artifacts:\n\`\`\`text\n${results}\n\`\`\`"
-          echo -e "${md}" >> "$GITHUB_STEP_SUMMARY"
+          echo "::group::ls dist"
+          ls -lAhR dist
+          echo "::endgroup::"
 
-      - name: "Upload to Actions"
-        uses: actions/upload-artifact@v5
-        continue-on-error: true
-        with:
-          name: dist
-          path: dist
-
-      - name: "Archive Distribution"
-        continue-on-error: true
-        run: |
-          chmod +x dist/get-contributors/index.js
-          zip -r dist.zip dist package.json README.md LICENSE
-
+      # NOTE: get-contributors.mjs is asset #2 (index 1) for homebrew
       - name: "Upload Release"
         id: release
         if: ${{ github.event_name == 'release' }}
         uses: cssnr/upload-release-action@v1
-        continue-on-error: true
         with:
-          files: |
-            dist.zip
-            dist/get-contributors/index.js
-          names: |
-            dist.zip
-            get-contributors.mjs
+          globs: |
+            *.tgz
+            dist/get-contributors/get-contributors.mjs
 
-      # NOTE: This assumes asset 1 from the release...
+      # NOTE: This assumes asset 1 from the release above
       - name: "Homebrew Action"
         id: homebrew
         if: ${{ github.event_name == 'release' && !github.event.release.prerelease }}
@@ -116,12 +94,19 @@ jobs:
           formula: get-contributors.rb
           message: Bump get-contributors.rb to ${{ github.ref_name }}
           branch: master
-          app_id: 146360
+          app_id: ${{ vars.APP_CLIENT_ID }}
           app_private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
+      - name: "Publish NPM"
+        if: ${{ !github.event.release.prerelease }}
+        #env:
+        #  # for initial publishing, remove after adding trusted publishing
+        #  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --ignore-scripts --provenance --access public
+
       - name: "Update Release Notes Action"
-        uses: smashedr/update-release-notes-action@master
         continue-on-error: true
+        uses: smashedr/update-release-notes-action@master
         with:
           location: tail
 
